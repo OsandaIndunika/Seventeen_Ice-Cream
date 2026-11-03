@@ -1,0 +1,159 @@
+.outlet-page-wrapper {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.outlet-container {
+    max-width: 672px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.outlet-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.brand-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.02em;
+}
+
+.brand-frosty {
+    color: #1e293b;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.brand-delights {
+    color: #ec4899;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-left: 6px;
+}
+
+.main-heading {
+    font-size: 26px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 8px 0;
+}
+
+.sub-heading {
+    font-size: 14px;
+    color: #64748b;
+    margin: 0;
+}
+
+.outlet-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .outlet-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.outlet-card {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 2px solid transparent;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+}
+
+.outlet-card:hover {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.outlet-card.card-pink:hover {
+    border-color: #fbcfe8;
+}
+
+.outlet-card.card-blue:hover {
+    border-color: #bfdbfe;
+}
+
+.outlet-card.selected-card-pink {
+    border-color: #ec4899;
+    background-color: #fff5f8;
+}
+
+.outlet-card.outlet-card.selected-card-blue {
+    border-color: #3b82f6;
+    background-color: #eff6ff;
+}
+
+.bg-circle {
+    position: absolute;
+    top: -24px;
+    right: -24px;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.circle-pink {
+    background-color: rgba(253, 242, 248, 0.7);
+}
+
+.circle-blue {
+    background-color: rgba(239, 246, 255, 0.7);
+}
+
+.selected-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 11px;
+}
+
+.badge-pink {
+    background-color: #ec4899;
+}
+
+.badge-blue {
+    background-color: #3b82f6;
+}
+
+.icon-wrapper {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+    z-index: 1;
+}
