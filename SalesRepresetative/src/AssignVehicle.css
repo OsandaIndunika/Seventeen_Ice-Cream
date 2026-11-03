@@ -1,159 +1,264 @@
-.outlet-page-wrapper {
+.assign-container {
     min-height: 100vh;
-    width: 100%;
-    background-color: #f8fafc;
+    width: 100vw;
+    background-color: #f1f5f9;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 24px;
-    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.outlet-container {
-    max-width: 672px;
+.assign-card-wrapper {
     width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    padding: 3rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;   
 }
 
-.outlet-header {
+.brand-subtitle {
+    font-size: 1.5rem;
+    letter-spacing: 0.01em;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
     text-align: center;
-    margin-bottom: 30px;
+}
+
+.frosty {
+    color: #0f172a;
+}
+
+.delights {
+    color: #ec4899;
 }
 
 .brand-title {
-    font-size: 24px;
-    font-weight: 700;
-    margin: 0 0 16px 0;
-    letter-spacing: -0.02em;
-}
-
-.brand-frosty {
-    color: #1e293b;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-.brand-delights {
-    color: #ec4899;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    margin-left: 6px;
-}
-
-.main-heading {
-    font-size: 26px;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #0f172a;
-    margin: 0 0 8px 0;
+    letter-spacing: -0.025em;
 }
 
-.sub-heading {
-    font-size: 14px;
+.brand-description {
+    font-size: 0.875rem;
     color: #64748b;
-    margin: 0;
+    margin-top: 0.25rem;
+    margin-bottom: 2.5rem;
 }
 
-.outlet-grid {
+.vehicle-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;
     width: 100%;
+    max-width: 56rem;
+    margin-bottom: 3rem;
 }
 
-@media (min-width: 640px) {
-    .outlet-grid {
-        grid-template-columns: repeat(2, 1fr);
+@media (min-width: 768px) {
+    .vehicle-grid{
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
-.outlet-card {
+.vehicle-card {
     position: relative;
     background-color: #ffffff;
-    border-radius: 16px;
-    padding: 32px 24px;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border: 2px solid transparent;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     cursor: pointer;
-    overflow: hidden;
-    transition: all 0.2s ease-in-out;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
-.outlet-card:hover {
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
-    transform: translateY(-2px);
+.vehicle-card:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.outlet-card.card-pink:hover {
-    border-color: #fbcfe8;
+.corner-circle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 30%;
+    border-bottom-left-radius: 100%;
+    opacity: 0.4;
 }
 
-.outlet-card.card-blue:hover {
-    border-color: #bfdbfe;
+.corner-circle.pink {
+    background-color: #fbcfe8;
 }
 
-.outlet-card.selected-card-pink {
+.corner-circle.blue {
+    background-color: #bfdbfe;
+}
+
+.corner-circle.emerald {
+    background-color: #a7f3d0;
+}
+
+.vehicle-card.pink.selected {
     border-color: #ec4899;
-    background-color: #fff5f8;
+    background-color: rgba(252, 231, 243, 0.5);
+    box-shadow: 0 10px 15px -3px rgba(236, 72, 153, 0.2);
 }
 
-.outlet-card.outlet-card.selected-card-blue {
+.vehicle-card.blue.selected {
     border-color: #3b82f6;
+    background-color: rgba(239, 246, 255, 0.5);
+    box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2);
+}
+
+.vehicle-card.emerald.selected {
+    border-color: #10b981;
+    background-color: rgba(236, 253, 245, 0.5);
+    box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2);
+}
+
+.icon-container {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.icon-container.pink {
+    background-color: #fce7f3;
+}
+
+.icon-container.blue {
     background-color: #eff6ff;
 }
 
-.bg-circle {
-    position: absolute;
-    top: -24px;
-    right: -24px;
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    pointer-events: none;
+.icon-container.emerald {
+    background-color: #ecfdf5;
 }
 
-.circle-pink {
-    background-color: rgba(253, 242, 248, 0.7);
+.vehicle-icon {
+    font-size: 1.25rem;
 }
 
-.circle-blue {
-    background-color: rgba(239, 246, 255, 0.7);
+.vehicle-icon.pink {
+    color: #ec4899;
 }
 
-.selected-badge {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
+.vehicle-icon.blue {
+    color: #3b82f6;
+}
+
+.vehicle-icon.emerald {
+    color: #10b981;
+}
+
+.vehicle-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+}
+
+.vehicle-desc {
+    font-size: 0.75rem;
+    color: #64748b;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+}
+
+.select-btn {
+    margin-top: auto;
+    width: 100%;
+    padding: 0.625rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid #cbd5e1;
+    background-color: #ffffff;
+    color: #334155;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.select-btn:hover {
+    background-color: #f8fafc;
+}
+
+.select-btn.pink {
+    border: 2px solid #ec4899;
+    color: #ec4899;
+    font-weight: 600;
+}
+
+.select-btn.blue {
+    border: 2px solid #3b82f6;
+    color: #3b82f6;
+    font-weight: 600;
+}
+
+.select-btn.emerald {
+    border: 2px solid #10b981;
+    color: #10b981;
+    font-weight: 600;
+}
+
+.select-btn.pink.selected {
+    border: 2px solid #ec4899;
+    color: #ec4899;
+    background-color: #fce7f3;
+    font-weight: 600;
+}
+
+.select-btn.blue.selected {
+    border: 2px solid #3b82f6;
+    color: #3b82f6;
+    background-color: #eff6ff;
+    font-weight: 600;
+}
+
+.select-btn.emerald.selected {
+    border: 2px solid #10b981;
+    color: #10b981;
+    background-color: #ecfdf5;
+    font-weight: 600;
+}
+
+.footer-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.footer-link {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    background: none;
+    border: none;
+    cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    font-size: 11px;
+    gap: 0.5rem;
+    transition: color 0.2s ease;
 }
 
-.badge-pink {
-    background-color: #ec4899;
-}
-
-.badge-blue {
-    background-color: #3b82f6;
-}
-
-.icon-wrapper {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    margin-bottom: 20px;
-    z-index: 1;
+.footer-link:hover {
+    color: #475569;
 }

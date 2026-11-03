@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import SelectOutlet from './SelectOutlet'
+import AssignVehicle from './AssignVehicle'
 import './App.css'
 
 function App() {

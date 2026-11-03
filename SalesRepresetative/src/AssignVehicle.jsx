@@ -1,144 +1,91 @@
 import React, {useState} from "react";
 import {
-    FaMotorCycle,
+    FaMotorcycle,
     FaTruck,
     FaSnowflake,
-    FaArrowLeft,
-    
+    FaArrowLeft
 } from 'react-icons/fa';
-import './SelectOutlet.css';
+import './AssignVehicle.css';
 
-const outletsData = [
+function AssignVehicle({onChangeLogin, onOutletSelect}) {
+    const [selectedVehicle, setSelectedVehicle] = useState(null);
+
+    const vehicles = [
         {
-            id: 'downtown',
-            name: 'Downtown',
-            description: 'Main Street, City Center, High traffic area, Open 24/7.',
-            address: '123 Main Street. Suite 100',
-            hours: 'Open 24/7',
-            icon: FaStore,
-            colorScheme: 'pink'
+            id: 'e-bike',
+            name: 'E-Bike pro',
+            description: 'Fast, eco-friendly delivery for downtown areas. Capacity: 50L',
+            icon: <FaMotorcycle className="vehicle-icon pink" />,
+            type: 'pink'
         },
         {
-            id: 'uptown',
-            name: 'Uptown Mall',
-            description: 'Located in the Food Court, Level 2. Family focused experience.',
-            address: '456 Commercial Way, Level 2',
-            hours: '10:00 AM - 10:00 PM',
-            icon: FaBuilding,
-            colorScheme: 'blue'
+            id: 'chiller-van',
+            name: 'Chiller Van',
+            description: 'Large capacity for suburban routes. Integrated cooling. Capacity: 250L',
+            icon: <FaTruck className="vehicle-icon blue" />,
+            type: 'blue'
+        },
+        {
+            id: 'heavy-freezer',
+            name: 'Heavy Freezer',
+            description: 'Long-haul distribution to regional outlets. High-power freezer. Capacity: 600L',
+            icon: <FaSnowflake className="vehicle-icon emerald" />,
+            type: 'emerald'
         }
     ];
 
-function SelectOutlet({onChangeLogin, onOutletSelect}) {
-    const [selectedId, setSelectedId] = useState(null);
-    const [activeModalOutlet, setActiveModalOutlet] = useState(null);
-
-    const handleOpenTerminal = (e, outlet) => {
-        e.stopPropagation();
-        setSelectedId(outlet.id);
-        setActiveModalOutlet(outlet);
-        if(onOutletSelect){
-            onOutletSelect(outlet);
-        }
-    };
-
     return (
-        <div className="outlet-page-wrapper">
-            <div className="outlet-container">
-                <header className="outlet-header">
-                    <h1 className="brand-title">
-                        <span className="brand-frosty">Frosty</span>
-                        <span className="brand-delights">Delights</span>
-                    </h1>
-                    <h2 className="main-heading">Select Your Outlet</h2>
-                    <p className="sub-heading">Please select the branch you are managing for this shift.</p>
-                </header>
+        <div className="assign-container">
+            <div className="assign-card-wrapper">
+                <span className="brand-subtitle">
+                    <span className="frosty">Frosty</span><span className="delights"> Delights</span>
+                </span>
+                <h1 className="brand-title">
+                    Assign Your Vehicle
+                </h1>
+                <p className="brand-description">
+                    Please select the vehicle you'll be using for today's deliveries.
+                </p>
 
-                <div className="outlet-grid">
-                    {outletsData.map((outlet) => {
-                        const isSelected = selectedId === outlet.id;
-                        const isPink = outlet.colorScheme === 'pink';
-                        const IconComponent = outlet.icon;
+                <div className="vehicle-grid">
+                    {vehicles.map((vehicle) => {
+                        const isSelected = selectedVehicle === vehicle.id;
 
                         return (
-                            <div key={outlet.id} 
-                            onClick={() => setSelectedId(outlet.id)} 
-                            className={`outlet-card ${isPink ? 'card-pink' : 'card-blue'}  ${isSelected ? 'selected' : ''}`}>
-                                <div className={`bg-circle ${isPink ? 'circle-pink' : 'circle-blue'}`} />
-
-                                {isSelected && (
-                                    <div className={`selected-badge ${isPink ? 'badge-pink' : 'badge-blue'}`}>
-                                        <FaCheck />
-                                    </div>
-                                )}
-
-                                <div className={`icon-wrapper ${isPink ? 'icon-pink' : 'icon-blue'}`}>
-                                    <IconComponent />
+                            <div key={vehicle.id} onClick={() => setSelectedVehicle(vehicle.id)} className={`vehicle-card ${vehicle.type} ${isSelected ? 'selected' : ''}`}>
+                                <div className={`corner-circle ${vehicle.type}`}></div>
+                                
+                                <div className={`icon-container ${vehicle.type}`}>
+                                    {vehicle.icon}
                                 </div>
 
-                                <h3 className="outlet-title">{outlet.name}</h3>
-                                <p className="outlet-desc">{outlet.description}</p>
+                                <h3 className="vehicle-name">
+                                    {vehicle.name}
+                                </h3>
+                                <p className="vehicle-desc">
+                                    {vehicle.description}
+                                </p>
 
-                                <button type="button" onClick={(e) => handleOpenTerminal(e, outlet)}
-                                    className={`terminal-btn ${isPink ? 'btn-pink' : 'btn-blue'}`}>
-                                    Open Terminal 
+                                <button onClick={(e) => {
+                                    e.stopPropagation();
+                                    setSelectedVehicle(vehicle.id);
+                                    }}
+                                    className={`select-btn ${vehicle.type} ${isSelected ? 'selected' : ''}`}
+                                >
+                                    {isSelected ? 'Selected' : 'Select Vehicle'}
                                 </button>
                             </div>
                         );
                     })}
                 </div>
-
-                <footer className="outlet-footer">
-                    <button type="button" onClick={onChangeLogin} className="change-login-btn">
-                        <FaArrowLeft />
-                        <span>Change Login</span>
+                <div className="footer-wrapper">
+                    <button className="footer-link">
+                        <FaArrowLeft /> Change Login
                     </button>
-                </footer>
-            </div>
-
-            {activeModalOutlet && (
-                <div className="modal-overlay">
-                    <div className="modal-card">
-                        <button className="modal-close" onClick={() => setActiveModalOutlet(null)}>
-                            <FaTimes />
-                        </button>
-
-                        <div className={`modal-header-icon ${activeModalOutlet.colorScheme === 'pink' ? 'icon-pink' : 'icon-blue'}`}>
-                            <FaCashRegister />
-                        </div>
-
-                        <h3 className="modal-title">Opening Terminal</h3>
-                        <p className="modal-subtitle">
-                            Initializing POS station for <strong>{activeModalOutlet.name}</strong>
-                        </p>
-
-                        <div className="detail-row">
-                            <FaMapMarkerAlt className="detail-icon" />
-                            <span>{activeModalOutlet.address}</span>
-                        </div>
-                        <div className="detail-row">
-                            <FaClock className="detail-icon" />
-                            <span>Shift Hours: {activeModalOutlet.hours}</span>
-                        </div>
-                        <div className="detail-row">
-                            <FaShieldAlt className="detail-icon" />
-                            <span>System status: Ready & Online</span>
-                        </div>
-                    </div>
-
-                    <div className="modal-actions">
-                        <button className="btn-cancel" onClick={() => setActiveModalOutlet(null)}>
-                            Cancel
-                        </button>
-                        <button className={`btn-confirm ${activeModalOutlet.colorScheme === 'pink' ? 'confirm-pink' : 'confirm-blue'}`}
-                        onClick={() => alert(`Launching terminal for ${activeModalOutlet.name}...`)}>
-                            Lunch Register
-                        </button>
-                    </div>
                 </div>
-            )}
+            </div>
         </div>
     );
 }
 
-export default SelectOutlet;
+export default AssignVehicle;
