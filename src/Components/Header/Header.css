@@ -27,8 +27,10 @@
 .header-left p {
   overflow: hidden;
   color: #233b40;
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
   font-size: 1.35rem;
   font-weight: 700;
+  letter-spacing: -0.02em;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
