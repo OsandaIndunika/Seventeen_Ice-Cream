@@ -1,0 +1,237 @@
+.content-body {
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.metric-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.metric-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 0.5px;
+}
+
+.metric-value {
+    font-size: 22px;
+    font-weight: 600;
+    color: #0f172a;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.metric-sub {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.metric-sub.highlight {
+    font-size: 12px;
+    color: #24ca87;
+}
+
+.analytics-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+}
+
+.payment-methods-card {
+    height: 150px;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.card h4 {
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif;
+    color: #1e293b;
+    margin-bottom: 16px;
+}
+
+.bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+.bar-date {
+    width: 75px;
+}
+
+.bar-track {
+    flex: 1;
+    height: 8px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    background-color: #20b2aa;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.highlight-bar {
+    background-color: #f472b6;
+}
+
+.bar-amount {
+    width: 40px;
+    text-align: center;
+    font-weight: 600;
+    color: #334155;
+}
+
+.payment-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.payment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    width: 100%;
+    border-bottom: 1px solid #c9cbcf;
+}
+
+.payment-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cash p {
+    font-size: 10px;
+    color: #94a3b8;
+}
+
+.dot {
+    width: 8px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.dot.cash {
+    background-color: #20b2aa;
+}
+
+.payment-val {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.payment-subtext {
+    font-size: 12px;
+    color: #f925cb;
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+.card-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.text-btn {
+    background: none;
+    border: 1px solid #20b2aa;
+    padding: 2px 8px;
+    border-radius: 10px;
+    color: #20b2aa;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.text-btn:hover {
+    background-color: #defcfa;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.bills-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 13px;
+}
+
+.bills-table th {
+    color: #94a3b8;
+    font-weight: 600;
+    padding: 10px 12px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.bills-table td {
+    padding: 12px;
+    color: #334155;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.bill-id {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.pointer {
+    width: 5px;
+    height: 10px;
+    background: #ff527b;
+    display: inline-block;
+    border-radius: 2px;
+    margin-right: 2px;
+}
+
+.badge {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.amount-cell {
+    font-weight: 600;
+    color: #0f172a;
+}

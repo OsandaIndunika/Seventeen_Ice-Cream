@@ -1,0 +1,260 @@
+.route-code {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #2b7a78;
+}
+
+.route-subtext {
+    font-size: 0.65rem;
+    color: #559b98;
+}
+
+.dashboard-content {
+    padding: 12px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.inventory-section {
+    margin-bottom: 12px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.section-header h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #444;
+}
+
+.quick-add-btn {
+    background: transparent;
+    border: none;
+    color: #4a90e2;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.inventory-card {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 8px 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.inventory-card-label {
+    font-size: 0.65rem;
+    color: #a0a0a0;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.inventory-card-count {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #333;
+    margin: 2px 0 4px 0;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 4px;
+    background-color: #f0f0f0;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+}
+
+.bill-section {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.bill-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+}
+
+.form-group label {
+    font-size: 0.65rem;
+    color: #a0a0a0;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.select-input, .form-group input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #eef0f4;
+    background-color: #f9fafb;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #333;
+    outline: none;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.half-width {
+    flex: 1;
+}
+
+.add-to-bill-btn {
+    width: 100%;
+    background-color: #121929;
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 6px;
+    margin-bottom: 20px;
+}
+
+.add-to-bill-btn:hover {
+    background-color: #1a233a;
+}
+
+.order-summary {
+    margin-bottom: 16px;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.order-title {
+    font-size: 0.75rem; 
+    color: #a0a0a0;
+}
+
+.inv-code {
+    font-size: 0.7rem;
+    color: #b0b0b0;
+}
+
+.order-item-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #555;
+    margin-bottom: 6px;
+}
+
+.order-item-price {
+    font-weight: 600;
+    color: #333;
+}
+
+.order-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    padding-top: 8px;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.total-amount {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ff527b;
+}
+
+.finalize-btn {
+    width: 100%;
+    background-color: #85dfc1;
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+.finalize-btn:hover {
+    background-color: #72cfb0;
+}
+
+.payment-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.payment-btn {
+    background-color: #f7fafc;
+    border: 1px solid transperant;
+    padding: 14px 8px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.payment-btn.cash.active {
+    background-color: #eaf8f4;
+    border-color: #2b7a78;
+    color: #2b7a78;
+}
+
+.payment-btn.credit.active {
+    background-color: #edf5ff;
+    color: #4a90e2;
+}
+
+.payment-btn.cheque.active {
+    background-color: #fff9e6;
+    color: #d99b00;
+}
+
+.shop-owner-footer {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #888;
+    cursor: pointer;
+}
