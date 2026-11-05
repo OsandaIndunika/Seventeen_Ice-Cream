@@ -1,0 +1,36 @@
+.header {
+  height: 50px;
+  background-color: #ebf6f6;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+
+}
+
+.header-right {
+  display: flex;
+  gap: 10px;
+  margin-right: 20px;
+  flex: 1;
+}
+
+.header-left {
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px;
+  flex: 3;
+}
+
+.header-center {
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex: 2;
+}
+
+.profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
