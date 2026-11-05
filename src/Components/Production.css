@@ -46,6 +46,36 @@
   border-radius: 15px;
 }
 
+.production-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.production-table-wrapper {
+  overflow-x: auto;
+}
+
+.production-table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  color: #263238;
+  text-align: left;
+}
+
+.production-table th,
+.production-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(38, 50, 56, 0.2);
+}
+
+.production-table th {
+  font-weight: 600;
+}
+
 /* Record Production */
 .record-section {
   flex: 1.2;
@@ -57,7 +87,7 @@
 }
 
 .coolroom-select{
-    width: 300px;
+    width: 80%;
     padding: 10px 15px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -70,6 +100,74 @@
 .coolroom-select:focus{
      outline: none;
     border-color: #2563eb;
+}
+
+.flavour-quantity-section{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.flavour-select-section{
+    flex:2;
+    gap: 5px;
+}
+
+.quantity-input-section{
+    flex:1.5;
+}
+
+.quentity-input{
+width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: rgb(248, 248, 248);
+    color: black;
+    font-size: 14px;
+}
+
+.flavour-select{
+width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: rgb(248, 248, 248);
+    color: black;
+    font-size: 14px;
+    cursor: pointer;
+
+}
+
+.add-entry-btn{
+    padding: 10px 20px;
+    background-color: #979f9f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.add-entry-btn:hover{
+    background-color: #7a7f7f;
+}
+.production-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.clear-btn{
+    padding: 10px 20px;
+    background-color: transparent;
+    color: rgb(226, 36, 36);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+     margin-left: auto;
 }
 
 @media (max-width: 768px) {
