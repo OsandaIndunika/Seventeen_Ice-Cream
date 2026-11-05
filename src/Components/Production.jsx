@@ -9,6 +9,7 @@ function Production() {
     const [flavour, setFlavour] = useState("");
     const [quantity, setQuantity] = useState("");
     const [productionEntries, setProductionEntries] = useState([]);
+    const [todaysProduction, setTodaysProduction] = useState([]);
 
 
     {/* Add a new production entry */ }
@@ -29,14 +30,15 @@ function Production() {
         };
 
         setProductionEntries(prevEntries => [...prevEntries, newEntry]);
+        setTodaysProduction(prevEntries => [...prevEntries, newEntry]);
 
         setFlavour("");
         setQuantity("");
     }
 
-    {/* Clear all production entries */ }
+    {/* Clear today's production list without removing room records */ }
     const handleClearAll = () => {
-        setProductionEntries([]);
+        setTodaysProduction([]);
     };
 
     return (
@@ -161,10 +163,10 @@ function Production() {
                                 </button>
                             </div>
                             <ul>
-                                {productionEntries.length === 0 ? (
+                                {todaysProduction.length === 0 ? (
                                     <p>No production recorded yet.</p>
                                 ) : (
-                                    productionEntries.map((entry) => (
+                                    todaysProduction.map((entry) => (
                                         <li key={entry.id}>
                                             {entry.flavour} - {entry.quantity}
                                         </li>
