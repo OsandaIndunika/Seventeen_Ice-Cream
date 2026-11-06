@@ -1,7 +1,7 @@
 import React from 'react'
 import './Production.css'
-import SideBar from './SideBar/SideBar'
-import Header from './Header/Header'
+import SideBar from '../Components/SideBar/SideBar'
+import Header from '../Components/Header/Header'
 import { useState } from 'react'
 
 function Production() {
@@ -21,7 +21,7 @@ function Production() {
         }
 
         const newEntry = {
-            id: crypto.randomUUID(),
+            
             coolroom: coolroom,
             flavour: flavour,
             quantity: Number(quantity),
@@ -36,7 +36,7 @@ function Production() {
         setQuantity("");
     }
 
-    {/* Clear today's production list without removing room records */ }
+    {/* Clear today's production list */ }
     const handleClearAll = () => {
         setTodaysProduction([]);
     };

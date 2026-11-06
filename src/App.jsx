@@ -1,11 +1,14 @@
+import { Edit } from 'lucide-react'
 import './App.css'
-import Production from './Components/Production'
+import Production from './Pages/Production'
+import EditPrice from './Pages/EditPrice'
 
 function App() {
 
   return (
     <>
-     <Production />
+    <EditPrice />
+     {/* <Production /> */ }
     </>
   )
 }
