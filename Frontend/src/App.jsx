@@ -1,5 +1,6 @@
 
 import { Routes, Route, Link, useLocation } from "react-router-dom";
+import { useAuth } from "./context/AuthContext";
 
 // ==============================
 // COMPONENTS
@@ -7,6 +8,8 @@ import { Routes, Route, Link, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import WholesaleProtectedRoute from "./components/WholesaleProtectedRoute";
+import AdminDashboard from "./pages/AdminDashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 // ==============================
 // PUBLIC PAGES
@@ -55,7 +58,16 @@ function NotFound() {
     </main>
   );
 }
+  function AdminPage() {
+    const { user, logout } = useAuth();
 
+    return (
+      <AdminDashboard
+        user={user}
+        onLogout={logout}
+      />
+    );
+  }
 // ==============================
 // MAIN APPLICATION
 // ==============================
@@ -171,6 +183,14 @@ export default function App() {
           path="*"
           element={<NotFound />}
         />
+        <Route
+          element={<ProtectedRoute allowedRoles={["ADMIN"]} />}
+          >
+          <Route
+            path="/admin"
+            element={<AdminPage />}
+          />
+        </Route>
 
       </Routes>
 

@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
 import {
   IceCreamCone,
   Mail,
@@ -10,46 +11,87 @@ import {
   ArrowRight,
   UserPlus,
   ShieldCheck,
+  LoaderCircle,
 } from "lucide-react";
+
 import { useAuth } from "../context/AuthContext";
 
+// Dashboard routes for each account role
 const dashboardRoutes = {
-  WHOLESALE: "/wholesale/dashboard",
-  STAFF: "/staff/dashboard",
+  ADMIN: "/admin",
+
+  FACTORY_MANAGER: "/factory-manager",
+
   SALES_MANAGER: "/sales/dashboard",
+
   OUTLET_MANAGER: "/outlet/dashboard",
-  ADMIN: "/admin/dashboard",
+
+  DELIVERY_PERSON: "/delivery/dashboard",
+
+  WHOLESALE: "/wholesale/dashboard",
+
+  STAFF: "/staff/dashboard",
 };
 
 export default function Login() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, user, isAuthenticated } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // Login form submission
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (loading) return;
+
     setError("");
     setLoading(true);
 
     try {
-      const result = await login(email.trim(), password);
+      const normalizedEmail = email.trim().toLowerCase();
 
-      const role = result.user?.role;
+      // Send credentials to Spring Boot through AuthContext
+      const result = await login(normalizedEmail, password);
+
+      // Supports login() returning either:
+      // { token, user } or the user object directly.
+      const authenticatedUser = result?.user ?? result;
+
+      if (!authenticatedUser?.role) {
+        throw new Error(
+          "Login succeeded, but the account role was not returned."
+        );
+      }
+
+      const role = authenticatedUser.role;
+
+      // Find the appropriate dashboard
       const destination = dashboardRoutes[role];
 
       if (!destination) {
-        setError("Your account role is not supported.");
-        return;
+        throw new Error(
+          `No dashboard has been configured for the ${role} role.`
+        );
       }
 
-      navigate(destination, { replace: true });
+      // Redirect to role-based dashboard
+      navigate(destination, {
+        replace: true,
+      });
+
     } catch (err) {
-      setError(err.message || "Login failed. Please try again.");
+      console.error("Login failed:", err);
+
+      setError(
+        err?.message ||
+          "Unable to sign in. Please check your credentials."
+      );
     } finally {
       setLoading(false);
     }
@@ -57,13 +99,19 @@ export default function Login() {
 
   return (
     <main className="min-h-screen bg-[#FFF9F3] px-4 py-12 sm:px-6 lg:py-20">
+
       <div className="mx-auto grid max-w-6xl overflow-hidden rounded-[32px] bg-white shadow-xl lg:grid-cols-2">
 
         {/* LEFT SIDE */}
         <section className="relative flex flex-col justify-between overflow-hidden bg-[#3654FF] px-8 py-12 text-white sm:px-12 lg:min-h-[680px]">
 
+          {/* Brand */}
           <div className="relative z-10">
-            <Link to="/" className="inline-flex items-center gap-3">
+
+            <Link
+              to="/"
+              className="inline-flex items-center gap-3"
+            >
               <div className="rounded-2xl bg-white/15 p-3">
                 <IceCreamCone size={32} />
               </div>
@@ -72,14 +120,18 @@ export default function Login() {
                 <h2 className="text-xl font-bold">
                   Sathutu Sina
                 </h2>
+
                 <p className="text-sm text-blue-100">
                   Dairies
                 </p>
               </div>
             </Link>
+
           </div>
 
+          {/* Welcome section */}
           <div className="relative z-10 my-16">
+
             <span className="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm">
               Welcome Back!
             </span>
@@ -100,25 +152,34 @@ export default function Login() {
 
             <div className="mt-10 flex items-center gap-3">
               <ShieldCheck size={22} />
+
               <span className="text-sm text-blue-100">
                 Secure account access
               </span>
             </div>
+
           </div>
 
+          {/* Copyright */}
           <p className="relative z-10 text-sm text-blue-100">
             © {new Date().getFullYear()} Sathutu Sina Dairies
           </p>
 
+          {/* Background decorations */}
           <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-white/10" />
+
           <div className="pointer-events-none absolute right-12 top-20 h-32 w-32 rounded-full bg-white/10" />
+
         </section>
 
         {/* RIGHT SIDE */}
         <section className="flex items-center px-7 py-12 sm:px-12 lg:px-16">
+
           <div className="w-full">
 
+            {/* Heading */}
             <div className="mb-10">
+
               <p className="mb-3 text-sm font-bold uppercase tracking-widest text-[#3654FF]">
                 Account Login
               </p>
@@ -130,8 +191,10 @@ export default function Login() {
               <p className="mt-4 text-gray-500">
                 Enter your account details to continue.
               </p>
+
             </div>
 
+            {/* Error message */}
             {error && (
               <div
                 role="alert"
@@ -141,10 +204,15 @@ export default function Login() {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Login form */}
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-6"
+            >
 
-              {/* EMAIL */}
+              {/* Email */}
               <div>
+
                 <label
                   htmlFor="login-email"
                   className="mb-2 block text-sm font-semibold text-[#17265B]"
@@ -153,7 +221,11 @@ export default function Login() {
                 </label>
 
                 <div className="flex items-center gap-3 rounded-xl border border-gray-200 px-4 focus-within:border-[#3654FF]">
-                  <Mail size={20} className="text-gray-400" />
+
+                  <Mail
+                    size={20}
+                    className="text-gray-400"
+                  />
 
                   <input
                     id="login-email"
@@ -161,15 +233,20 @@ export default function Login() {
                     autoComplete="username"
                     required
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(event) =>
+                      setEmail(event.target.value)
+                    }
                     placeholder="Enter your email"
-                    className="w-full bg-transparent py-4 outline-none"
+                    disabled={loading}
+                    className="w-full bg-transparent py-4 outline-none disabled:opacity-60"
                   />
+
                 </div>
               </div>
 
-              {/* PASSWORD */}
+              {/* Password */}
               <div>
+
                 <label
                   htmlFor="login-password"
                   className="mb-2 block text-sm font-semibold text-[#17265B]"
@@ -178,7 +255,11 @@ export default function Login() {
                 </label>
 
                 <div className="flex items-center gap-3 rounded-xl border border-gray-200 px-4 focus-within:border-[#3654FF]">
-                  <Lock size={20} className="text-gray-400" />
+
+                  <Lock
+                    size={20}
+                    className="text-gray-400"
+                  />
 
                   <input
                     id="login-password"
@@ -186,16 +267,24 @@ export default function Login() {
                     autoComplete="current-password"
                     required
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(event) =>
+                      setPassword(event.target.value)
+                    }
                     placeholder="Enter your password"
-                    className="w-full bg-transparent py-4 outline-none"
+                    disabled={loading}
+                    className="w-full bg-transparent py-4 outline-none disabled:opacity-60"
                   />
 
+                  {/* Toggle password visibility */}
                   <button
                     type="button"
-                    onClick={() => setShowPassword(!showPassword)}
+                    onClick={() =>
+                      setShowPassword((previous) => !previous)
+                    }
                     aria-label={
-                      showPassword ? "Hide password" : "Show password"
+                      showPassword
+                        ? "Hide password"
+                        : "Show password"
                     }
                     className="text-gray-400 hover:text-[#3654FF]"
                   >
@@ -205,23 +294,39 @@ export default function Login() {
                       <Eye size={20} />
                     )}
                   </button>
+
                 </div>
               </div>
 
-              {/* SUBMIT */}
+              {/* Submit */}
               <button
                 type="submit"
                 disabled={loading}
                 className="flex w-full items-center justify-center gap-3 rounded-full bg-[#3654FF] px-6 py-4 font-semibold text-white transition hover:bg-[#233BC8] disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {loading ? "Signing In..." : "Sign In"}
 
-                {!loading && <ArrowRight size={20} />}
+                {loading ? (
+                  <>
+                    <LoaderCircle
+                      size={20}
+                      className="animate-spin"
+                    />
+                    Signing In...
+                  </>
+                ) : (
+                  <>
+                    Sign In
+                    <ArrowRight size={20} />
+                  </>
+                )}
+
               </button>
+
             </form>
 
-            {/* WHOLESALE REGISTRATION */}
+            {/* Wholesale registration */}
             <div className="mt-10 border-t border-gray-100 pt-8">
+
               <p className="text-center text-gray-500">
                 Want to become a wholesale customer?
               </p>
@@ -238,16 +343,20 @@ export default function Login() {
                 Staff and managers can sign in using
                 their assigned accounts.
               </p>
+
             </div>
 
+            {/* Back to home */}
             <Link
               to="/"
               className="mt-8 block text-center text-sm font-medium text-[#3654FF] hover:underline"
             >
               Back to Home
             </Link>
+
           </div>
         </section>
+
       </div>
     </main>
   );
