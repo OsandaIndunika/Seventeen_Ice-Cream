@@ -3,7 +3,10 @@ import './DailyReports.css';
 import './Navigation.css';
 import {
     FaSignOutAlt,
-    FaCircle
+    FaCircle,
+    FaFileInvoiceDollar,
+    FaChartLine,
+    FaReply
 } from 'react-icons/fa';
 
 function DailyReports () {
@@ -32,24 +35,27 @@ function DailyReports () {
         <div className="app-container">
             <aside className="sidebar">
                 <div className="brand">
-                    <span className="frosty">Frosty</span><span className="delights">Delights</span>
+                    <img src="src/assets/logo.PNG" alt="logo" />
                 </div>
 
                 <nav className="nav-menu">
                     <button className={`nav-item ${activeTab === 'Billing' ? 'active' : ''}`}
                     onClick={() => setActiveTab('Billing')}>
-                        Billing 
+                        <FaFileInvoiceDollar className="nav-icon"/>
+                        <span>Billing</span>
                     </button>
 
                     <button className={`nav-item ${activeTab === 'Daily Reports' ? 'active' : ''}`}
                     onClick={() => setActiveTab('Daily Reports')}>
-                        Daily Reports
+                        <FaChartLine className="nav-icon"/>
+                        <span>Daily Reports</span>
                         {activeTab === 'Daily Reports' && <span className="active-dot"></span>}
                     </button>
 
                     <button className={`nav-item ${activeTab === 'Returns' ? 'active' : ''}`}
                     onClick={() => setActiveTab('Returns')}>
-                        Returns
+                        <FaReply className="nav-icon"/>
+                        <span>Returns</span>
                     </button>
                 </nav>
 
@@ -78,26 +84,26 @@ function DailyReports () {
                 </header>
 
                 <div className="content-body">
-                    <section className="metrics-grid">
-                        <div className="metric-card">
-                            <span className="metric-label">TODAY'S SALES</span>
-                            <h3 className="metric-value">$482.50</h3>
-                            <span className="metric-sub highlight">12% vs yesterday</span>
+                    <section className="data-grid">
+                        <div className="data-card">
+                            <span className="data-label">TODAY'S SALES</span>
+                            <h3 className="data-value">$482.50</h3>
+                            <span className="data-sub highlight">12% vs yesterday</span>
                         </div>
-                        <div className="metric-card">
-                            <span className="metric-label">ORDERS</span>
-                            <h3 className="metric-value">42</h3>
-                            <span className="metric-sub">Since 8:00 AM</span>
+                        <div className="data-card">
+                            <span className="data-label">ORDERS</span>
+                            <h3 className="data-value">42</h3>
+                            <span className="data-sub">Since 8:00 AM</span>
                         </div>
-                        <div className="metric-card">
-                            <span className="metric-label">TOTAL SALES</span>
-                            <h3 className="metric-value">$1,112.49</h3>
-                            <span className="metric-sub"></span>
+                        <div className="data-card">
+                            <span className="data-label">TOTAL SALES</span>
+                            <h3 className="data-value">$1,112.49</h3>
+                            <span className="data-sub"></span>
                         </div>
-                        <div className="metric-card">
-                            <span className="metric-label">TOP SELLER</span>
-                            <h3 className="metric-value">Strawberry Swirl</h3>
-                            <span className="metric-sub">18 Sold today</span>
+                        <div className="data-card">
+                            <span className="data-label">TOP SELLER</span>
+                            <h3 className="data-value">Strawberry Swirl</h3>
+                            <span className="data-sub">18 Sold today</span>
                         </div>
                     </section>
 

@@ -6,7 +6,10 @@ import {
     FaCreditCard,
     FaMoneyCheck,
     FaSignOutAlt,
-    FaCircle
+    FaCircle,
+    FaFileInvoiceDollar,
+    FaChartLine,
+    FaReply
 } from 'react-icons/fa';
 
 function Billing() {
@@ -35,24 +38,27 @@ function Billing() {
         <div className="app-container">
             <aside className="sidebar">
                 <div className="brand">
-                    <span className="frosty">Frosty</span><span className="delights">Delights</span>
+                    <img src="src/assets/logo.PNG" alt="logo" />
                 </div>
 
                 <nav className="nav-menu">
                     <button className={`nav-item ${activeTab === 'Billing' ? 'active' : ''}`}
                     onClick={() => setActiveTab('Billing')}>
-                        POS & Billing 
+                        <FaFileInvoiceDollar className="nav-icon"/>
+                        <span>POS & Billing</span>
                         {activeTab === 'Billing' && <span className="active-dot"></span>}
                     </button>
 
                     <button className={`nav-item ${activeTab === 'Daily Reports' ? 'active' : ''}`}
                     onClick={() => setActiveTab('Daily Reports')}>
-                        Daily Reports
+                        <FaChartLine className="nav-icon"/>
+                        <span>Daily Reports</span>
                     </button>
 
                     <button className={`nav-item ${activeTab === 'Returns' ? 'active' : ''}`}
                     onClick={() => setActiveTab('Returns')}>
-                        Returns
+                        <FaReply className="nav-icon"/>
+                        <span>Returns</span>
                     </button>
                 </nav>
 
@@ -76,7 +82,7 @@ function Billing() {
                             <div className="user-name">Sarah Jenkins</div>
                             <div className="user-role">DELIVERY MANAGER</div>
                         </div>
-                        <span className="user-avatar-dot"></span>
+                        <span className="user-avatar-dot">SJ</span>
                     </div>
                 </header>
 

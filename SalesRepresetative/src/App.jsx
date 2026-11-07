@@ -10,8 +10,8 @@ function App() {
     <div>
       {/* <AssignVehicle /> */}
       {/* <Billing /> */}
-      <DailyReports />
-      {/* <Returns /> */}
+      {/* <DailyReports /> */}
+      <Returns />
     </div>
   )
 }

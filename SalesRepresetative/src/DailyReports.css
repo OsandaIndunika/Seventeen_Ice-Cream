@@ -3,15 +3,16 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    overflow-y: auto;
 }
 
-.metrics-grid {
+.data-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
 }
 
-.metric-card {
+.data-card {
     background: #ffffff;
     padding: 20px;
     border-radius: 12px;
@@ -22,28 +23,28 @@
     gap: 6px;
 }
 
-.metric-label {
+.data-label {
     font-size: 11px;
     font-weight: 700;
     color: #94a3b8;
     letter-spacing: 0.5px;
 }
 
-.metric-value {
+.data-value {
     font-size: 22px;
     font-weight: 600;
     color: #0f172a;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.metric-sub {
+.data-sub {
     font-size: 12px;
     color: #64748b;
 }
 
-.metric-sub.highlight {
+.data-sub.highlight {
     font-size: 12px;
-    color: #24ca87;
+    color: #1c44b2;
 }
 
 .analytics-section {
@@ -98,7 +99,7 @@
 }
 
 .bar-fill {
-    background-color: #20b2aa;
+    background-color: #1c44b2;
     height: 100%;
     border-radius: 5px;
 }
@@ -150,7 +151,7 @@
 }
 
 .dot.cash {
-    background-color: #20b2aa;
+    background-color: #1c44b2;
 }
 
 .payment-val {
@@ -160,7 +161,7 @@
 
 .payment-subtext {
     font-size: 12px;
-    color: #f925cb;
+    color: #1c44b2;
     margin-top: 8px;
     font-weight: 500;
 }
@@ -174,17 +175,17 @@
 
 .text-btn {
     background: none;
-    border: 1px solid #20b2aa;
+    border: 1px solid #1c44b2;
     padding: 2px 8px;
     border-radius: 10px;
-    color: #20b2aa;
+    color: #1c44b2;
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
 }
 
 .text-btn:hover {
-    background-color: #defcfa;
+    background-color: #eaf2ff;
 }
 
 .table-responsive {

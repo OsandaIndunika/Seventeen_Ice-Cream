@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #f4f6f8;
+    background-color:#F7FAFF;
     color: #333;
 }
 
@@ -19,26 +19,17 @@ body {
 
 .sidebar {
     width: 200px;
-    background-color: #8ce4e1;
+    background-color: #eaf2ff;
     display: flex;
     flex-direction: column;
     padding: 24px 16px;
     position: relative;
+    height: 100vh;
 }
 
-.brand {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #ff527b;
-    margin-bottom: 30px;
-}
-
-.frosty {
-    font-family: serif;
-}
-
-.delights {
-    font-family: serif;
+img {
+    height: 180px;
+    width: 180px;
 }
 
 .nav-menu {
@@ -54,7 +45,7 @@ body {
     padding: 10px 14px;
     font-size: 0.85rem;
     font-weight: 500;
-    color: #2b7a78;
+    color: 	#3154ff;
     cursor: pointer;
     border-radius: 20px;
     display: flex;
@@ -64,38 +55,45 @@ body {
 }
 
 .nav-item.active {
-    background-color: #ffffff;
-    color: #ff527b;
+    background-color: #3154ff;
+    color: #ffffff;
     font-weight: 600;
+}
+
+.nav-icon {
+    font-size: 18px;
+    min-width: 20px;
+    display: inline-block;
 }
 
 .active-dot {
     width: 6px;
     height: 6px;
-    background-color: #ff527b;
+    background-color: #ffffff;
     border-radius: 50%;
 }
 
 .logout-btn {
     margin-top: auto;
-    color: #ff527b;
+    color: #3154ff;
     font-size: 0.85rem;
     font-weight: 500;
     cursor: pointer;
     padding: 10px 14px;
-    border-top: 1px solid #2b7a78;
+    border-top: 1px solid #3154ff;
 }
 
 .main-wrapper {
     flex: 1;
     display: flex;
+    height: 100vh;
     flex-direction: column;
     background-color: #f4f6f8;
 }
 
 .top-header {
     height: 54px;
-    background-color: #8ce4e1;
+    background-color: #eaf2ff;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -111,7 +109,7 @@ body {
 .status-indicator {
     width: 20px;
     height: 20px;
-    background-color: #fb9bb1;
+    background-color: #bbd0ff;
     border-radius: 30%;
     display: flex;
     align-items: center;
@@ -120,7 +118,18 @@ body {
 
 .indicator-icon {
     font-size: 12px;
-    color: #fd174c;
+    color: #1c44b2;
+}
+
+.route-code {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #1c44b2;
+}
+
+.route-subtext {
+    font-size: 0.65rem;
+    color: #1c44b2;
 }
 
 .header-right {
@@ -136,24 +145,24 @@ body {
 .user-name {
     font-size: 0.8rem;
     font-weight: 600;
-    color: #2b7a78;
+    color: #1c44b2;
 }
 
 .user-role {
     font-size: 0.6rem;
-    color: #559b98;
+    color: #1c44b2;
     letter-spacing: 0.5px;
 }
 
 .user-avatar-dot {
     width: 30px;
     height: 30px;
-    background-color: #ff8ca3;
+    background-color: #bbd0ff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fd174c;
+    color: #1c44b2;
     font-weight: 700;
 }
 
