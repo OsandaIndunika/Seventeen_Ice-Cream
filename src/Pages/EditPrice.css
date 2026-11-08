@@ -1,14 +1,19 @@
-.edit-price-page {
-  min-height: 100vh;
-  background: #f4f8f8;
-  color: #233b40;
-  font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
-}
-
-.edit-price-content {
+.main-content {
+  flex: 1;
   min-width: 0;
   min-height: 100vh;
 }
+
+.edit-price-page {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background: #f4f8f8;
+    min-height: 100vh;
+      color: #233b40;
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
 
 .price-dashboard {
   display: grid;
@@ -47,7 +52,7 @@
   right: 0;
   width: 5px;
   height: 100%;
-  background: #28aaa5;
+  background: #7276ea;
   content: "";
 }
 
@@ -64,7 +69,7 @@
   line-height: 1.1;
 }
 
-.summary-placeholder {
+.last-updated {
   color: #9aabad;
   font-size: 1.4rem;
 }
