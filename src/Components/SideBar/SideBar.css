@@ -38,6 +38,7 @@
   text-align: left;
   cursor: pointer;
   transition: background 160ms ease, color 160ms ease, box-shadow 160ms ease;
+   text-decoration: none;
 }
 
 .sidebar-button:hover {

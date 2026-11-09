@@ -9,31 +9,31 @@ function SideBar(props) {
         <>
             <div className='sidebar'>
                 <img src={logo} alt="Seventeen Ice Cream" className="sidebar-logo" />
-                <SidebarElements name="Dashboard" >
+                <SidebarElements name="Dashboard" path="/">
                     <House size={15} />
                 </SidebarElements>
 
-                <SidebarElements name="Production">
+                <SidebarElements name="Production" path="/production">
                     <IceCreamCone size={15} />
                 </SidebarElements>
 
-                <SidebarElements name="Edit Prices">
+                <SidebarElements name="Edit Prices" path="/edit-prices">
                     <CircleDollarSign size={15} />
                 </SidebarElements>
 
-                <SidebarElements name="Outlet">
+                <SidebarElements name="Outlet" path="/outlet">
                     <Store size={15} />
                 </SidebarElements>
 
-                <SidebarElements name="Delivery">
+                <SidebarElements name="Delivery" path="/delivery">
                     <Truck size={15} />
                 </SidebarElements>
 
-                <SidebarElements name="Employees">
+                <SidebarElements name="Employees" path="/employees">
                     <UserGroup size={15} />
                 </SidebarElements>
 
-                <SidebarElements name="Raw Materials">
+                <SidebarElements name="Raw Materials" path="/raw-materials">
                     <Boxes size={15} />
                 </SidebarElements>
 

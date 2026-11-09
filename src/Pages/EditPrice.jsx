@@ -56,7 +56,7 @@ function EditPrice() {
     return (
         <div className='edit-price-page'>
             {/* SideBar*/}
-            <SideBar />
+            <SideBar  />
 
             <main className='main-content'>
                 {/* Header */}
