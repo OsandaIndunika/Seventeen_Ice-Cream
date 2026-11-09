@@ -16,10 +16,13 @@ const router = createBrowserRouter([
 { path:"/production",
     element:<Production/>,
 },
-    {
+{
         path: "/edit-prices",
         element: <EditPrice />
-    },
+},
+{ path:"/employees",
+    element:<Employees/>,
+}
 ]);
 
 createRoot(document.getElementById('root')).render(

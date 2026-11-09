@@ -1,6 +1,6 @@
 import React from 'react'
 import './SideBar.css'
-import { House, IceCreamCone, CircleDollarSign, Store, Truck, UserGroup, Boxes,DoorOpen } from 'lucide-react'
+import { House, IceCreamCone, CircleDollarSign, Store, Truck, UserGroup, Boxes, DoorOpen } from 'lucide-react'
 import SidebarElements from './SidebarElements'
 import logo from '../../assets/logo.PNG'
 
@@ -8,7 +8,14 @@ function SideBar(props) {
     return (
         <>
             <div className='sidebar'>
-                <img src={logo} alt="Seventeen Ice Cream" className="sidebar-logo" />
+                <div className='logo-section'>
+                    <img src={logo} alt="Seventeen Ice Cream" className="sidebar-logo" />
+                    <div className='logo-text'>
+                        <span className="logo-name">Sathutusina</span>
+                        <span className="logo-subtitle">Admin Dashboard</span>
+                    </div>
+                </div>
+
                 <SidebarElements name="Dashboard" path="/">
                     <House size={15} />
                 </SidebarElements>
