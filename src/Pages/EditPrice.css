@@ -8,7 +8,7 @@
   display: flex;
   width: 100%;
   min-height: 100vh;
-  background: #f4f8f8;
+  background: #8493c8;
     min-height: 100vh;
       color: #233b40;
   font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -124,7 +124,7 @@
 .price-table th {
   padding: 12px 14px;
   border-bottom: 1px solid #e5eded;
-  background: #f7fafa;
+  background: #d9dcf8;
   color: #718589;
   font-size: 0.73rem;
   font-weight: 700;
@@ -187,8 +187,8 @@
 
 .price-field input:focus,
 .price-field select:focus {
-  border-color: #31aaa5;
-  box-shadow: 0 0 0 3px rgba(49, 170, 165, 0.15);
+  border-color: #5443e9;
+  box-shadow: 0 0 0 3px rgba(76, 114, 210, 0.15);
 }
 
 .update-price-button {
@@ -197,7 +197,7 @@
   padding: 11px 16px;
   border: 0;
   border-radius: 8px;
-  background: #188c88;
+  background: #3d2cd7;
   color: #fff;
   font: inherit;
   font-size: 0.9rem;
@@ -208,12 +208,12 @@
 
 .update-price-button:hover {
   transform: translateY(-1px);
-  background: #117a76;
+  background: #191283;
   box-shadow: 0 5px 12px rgba(24, 140, 136, 0.2);
 }
 
 .update-price-button:focus-visible {
-  outline: 3px solid rgba(49, 170, 165, 0.3);
+  outline: 3px solid rgba(2, 2, 2, 0.3);
   outline-offset: 3px;
 }
 
