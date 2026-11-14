@@ -62,7 +62,6 @@ function EditPrice() {
                 {/* Header */}
                 <Header headername="Edit Price" />
 
-                {/*Fist Section */}
                 <div className='price-dashboard'>
                     <section className='price-summary' aria-label='Price overview'>
                         {/* Summary - Flavour list */}
@@ -83,7 +82,7 @@ function EditPrice() {
                     <div className='price-workspace'>
 
                         {/* Price table */}
-                        <section className='price-card price-table-card'>
+                        <section className='price-card'>
                             <div className='section-heading'>
                                 <div>
                                     <h2>Flavour Price List</h2>

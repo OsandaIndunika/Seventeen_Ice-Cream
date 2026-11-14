@@ -9,7 +9,7 @@
   width: 100%;
   min-height: 100vh;
   background: #8493c8;
-    min-height: 100vh;
+  min-height: 100vh;
       color: #233b40;
   font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
 }
@@ -36,6 +36,8 @@
 }
 
 .summary-card {
+  min-height: 96px;
+  padding: 16px;
   position: relative;
   display: flex;
   min-height: 112px;
@@ -249,11 +251,6 @@
 
   .price-summary {
     gap: 12px;
-  }
-
-  .summary-card {
-    min-height: 96px;
-    padding: 16px;
   }
 
   .price-card {
