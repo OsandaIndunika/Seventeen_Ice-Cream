@@ -9,7 +9,6 @@
   width: 100%;
   min-height: 100vh;
   background: #e3e3f7;
-  min-height: 100vh;
   color: #233b40;
   font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
 }
@@ -82,7 +81,7 @@
 
 .employee-details-panel,
 .fingerprint-panel {
-  background-color: #211bdc;
+  background-color: #5184FF;
   color: white;
   border-radius: 16px;
   padding: 18px;
@@ -584,7 +583,7 @@
 }
 
 
-
+/* Summary cards section */
 .scanner-summary-container {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

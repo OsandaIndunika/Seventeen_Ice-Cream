@@ -8,20 +8,25 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import RawMaterial from './Pages/RawMaterial.jsx'
 
 const router = createBrowserRouter([
   { path:"/",
-    element:<App/>,
+    element:<App/>
 },
 { path:"/production",
-    element:<Production/>,
+    element:<Production/>
 },
 {
         path: "/edit-prices",
         element: <EditPrice />
 },
 { path:"/employees",
-    element:<Employees/>,
+    element:<Employees/>
+},
+{
+    path:"/raw-materials",
+    element:<RawMaterial />
 }
 ]);
 

@@ -458,7 +458,6 @@ const filteredRegisteredEmployees = registeredEmployees.filter((employee) => {
                 {/* Fingerprint Scan log */}
                 <section className='fingerprint-log' aria-label='Fingerprint scan log'>
                   <div className='section-heading'>
-
                     <div>
                       <h2>Fingerprint Scan Log</h2>
                       <p>Review current fingerprint scans and pending updates.</p>
@@ -533,6 +532,7 @@ const filteredRegisteredEmployees = registeredEmployees.filter((employee) => {
                     </table>
                   </div>
                 </section>
+
                 <section className="scanner-status">
                   <h2>Scanner Status</h2>
 
@@ -581,7 +581,8 @@ const filteredRegisteredEmployees = registeredEmployees.filter((employee) => {
                       {editingEmployeeId !== null
                         ? employeeForm.employeeId
                         : `EMP-${String(nextEmployeeNumber).padStart(4, "0")}`}
-                    </span>                  </div>
+                    </span>                  
+                    </div>
 
                   <div className="employee-details-form">
 

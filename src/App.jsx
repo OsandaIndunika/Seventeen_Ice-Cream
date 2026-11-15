@@ -3,7 +3,7 @@ import './App.css'
 import Production from './Pages/Production'
 import EditPrice from './Pages/EditPrice'
 import Employees from './Pages/Employees'
-import AddNewEmployee from './Pages/AddNewEmployee'
+import RawMaterial from './Pages/RawMaterial'
 
 function App() {
 
@@ -11,7 +11,8 @@ function App() {
     <>
     {/* <EditPrice /> */}
      {/* <Production /> */ }
-      <Employees />
+      {/* <Employees /> */}
+      <RawMaterial />
     </>
   )
 }
