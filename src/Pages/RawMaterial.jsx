@@ -3,6 +3,7 @@ import './RawMaterial.css'
 import SideBar from '../Components/SideBar/SideBar'
 import Header from '../Components/Header/Header'
 import { useState, useEffect, useRef } from "react";
+import { Receipt, ReceiptText, Clipboard, RotateCcwClock, CircleChevronsLeft } from 'lucide-react'
 
 
 function RawMaterial() {
@@ -28,6 +29,12 @@ function RawMaterial() {
     }, [selectedBill]);
 
     const [pastBills, setPastBills] = useState([]);
+
+    const [billSearch, setBillSearch] = useState("");
+
+    const [selectedBillMonth, setSelectedBillMonth] = useState("all");
+
+
     const [supplierName, setSupplierName] = useState("");
     const [purchaseDate, setPurchaseDate] = useState("");
     const [billFile, setBillFile] = useState(null);
@@ -591,6 +598,29 @@ function RawMaterial() {
         return matchesMaterial && matchesDate;
     });
 
+    const filteredBills = pastBills.filter((bill) => {
+        const searchText = billSearch.trim().toLowerCase();
+
+        // Search by Supplier Name or Bill Number
+        const matchesSearch =
+            String(bill.supplier ?? "")
+                .toLowerCase()
+                .includes(searchText) ||
+            String(bill.id ?? "")
+                .toLowerCase()
+                .includes(searchText);
+
+        // Filter by Month
+        const matchesMonth =
+            selectedBillMonth === "all" ||
+            bill.date?.slice(0, 7) === selectedBillMonth;
+
+        return matchesSearch && matchesMonth;
+    });
+
+
+
+
 
 
 
@@ -677,7 +707,8 @@ function RawMaterial() {
                             className="raw-action-btn"
                             onClick={() => setActiveView("purchase")}
                         >
-                            + Add Purchase
+                            <Receipt size={15} />
+                            Add Purchase
                         </button>
 
                         <button
@@ -685,6 +716,7 @@ function RawMaterial() {
                             className="raw-action-btn"
                             onClick={() => setActiveView("bills")}
                         >
+                            <ReceiptText size={15} />
                             Past Bills
                         </button>
 
@@ -693,6 +725,7 @@ function RawMaterial() {
                             className="raw-action-btn"
                             onClick={() => setActiveView("usage")}
                         >
+                            <Clipboard size={15} />
                             Record Usage
                         </button>
 
@@ -701,6 +734,7 @@ function RawMaterial() {
                             className="raw-action-btn"
                             onClick={() => setActiveView("history")}
                         >
+                            <RotateCcwClock size={15} />
                             Usage History
                         </button>
 
@@ -713,7 +747,8 @@ function RawMaterial() {
                                 setSelectedBill(null);
                             }}
                         >
-                            ← Back to Dashboard
+                            <CircleChevronsLeft size={15} />
+                            Back to Dashboard
                         </button>
 
 
@@ -1054,59 +1089,101 @@ function RawMaterial() {
                                 <h3>Past Bills</h3>
 
                                 <div className="past-bills-filters">
+
                                     <input
                                         type="text"
                                         placeholder="Search by supplier or bill number..."
+                                        value={billSearch}
+                                        onChange={(e) => setBillSearch(e.target.value)}
                                     />
 
-                                    <select defaultValue="October 2026">
-                                        <option>October 2026</option>
-                                        <option>September 2026</option>
-                                        <option>August 2026</option>
+
+
+                                    <select
+                                        value={selectedBillMonth}
+                                        onChange={(e) => setSelectedBillMonth(e.target.value)}
+                                    >
+                                        <option value="all">All Months</option>
+
+                                        {[...new Set(
+                                            pastBills
+                                                .map((bill) => bill.date?.slice(0, 7))
+                                                .filter(Boolean)
+                                        )]
+                                            .sort()
+                                            .reverse()
+                                            .map((month) => (
+                                                <option key={month} value={month}>
+                                                    {new Date(`${month}-01T00:00:00`).toLocaleDateString(
+                                                        "en-US",
+                                                        {
+                                                            month: "long",
+                                                            year: "numeric"
+                                                        }
+                                                    )}
+                                                </option>
+                                            ))}
                                     </select>
 
-                                    <select defaultValue="All Suppliers">
-                                        <option>All Suppliers</option>
-                                        <option>Ceylon Cocoa Traders</option>
-                                        <option>Ceylon Dairy Co.</option>
-                                        <option>Sweet Source Ltd.</option>
-                                    </select>
                                 </div>
-
-
                                 <div className="past-bills-grid">
-                                    {pastBills.map((bill) => (
-                                        <div className="past-bill-card" key={bill.id}>
-                                            <div className="bill-receipt-placeholder">
-                                                <span>RECEIPT</span>
-                                                <div className="bill-receipt-line"></div>
-                                                <div className="bill-receipt-line short"></div>
-                                                <div className="bill-receipt-line"></div>
-                                                <div className="bill-receipt-line short"></div>
+                                    {filteredBills.length === 0 ? (
+                                        <p className="no-bills-message">
+
+                                            {pastBills.length === 0
+                                                ? "No bills available."
+                                                : "No bills match your search or selected month."}
+
+                                        </p>
+                                    ) : (
+                                        filteredBills.map((bill) => (
+                                            <div className="past-bill-card" key={bill.id}>
+
+                                                <div className="bill-receipt-placeholder">
+                                                    {bill.file ? (
+                                                        bill.file.type.startsWith("image/") ? (
+                                                            <img
+                                                                src={URL.createObjectURL(bill.file)}
+                                                                alt={`Receipt ${bill.id}`}
+                                                                className="past-bill-image"
+                                                            />
+                                                        ) : bill.file.type === "application/pdf" ? (
+                                                            <div className="past-bill-pdf">
+                                                                <span>📄</span>
+                                                                <p>PDF Receipt</p>
+                                                            </div>
+                                                        ) : (
+                                                            <p>Unsupported file</p>
+                                                        )
+                                                    ) : (
+                                                        <p>No Receipt Uploaded</p>
+                                                    )}
+                                                </div>
+
+
+                                                <div className="past-bill-info">
+                                                    <strong>{bill.id}</strong>
+                                                    <span>Rs. {bill.amount}</span>
+                                                </div>
+
+                                                <p className="past-bill-supplier">
+                                                    {bill.supplier}
+                                                </p>
+
+                                                <p className="past-bill-details">
+                                                    {bill.material} • {bill.date}
+                                                </p>
+
+                                                <button
+                                                    type="button"
+                                                    className="view-bill-btn"
+                                                    onClick={() => setSelectedBill(bill)}
+                                                >
+                                                    View Bill
+                                                </button>
                                             </div>
-
-                                            <div className="past-bill-info">
-                                                <strong>{bill.id}</strong>
-                                                <span>Rs. {bill.amount}</span>
-                                            </div>
-
-                                            <p className="past-bill-supplier">
-                                                {bill.supplier}
-                                            </p>
-
-                                            <p className="past-bill-details">
-                                                {bill.material} • {bill.date}
-                                            </p>
-
-                                            <button
-                                                type="button"
-                                                className="view-bill-btn"
-                                                onClick={() => setSelectedBill(bill)}
-                                            >
-                                                View Bill
-                                            </button>
-                                        </div>
-                                    ))}
+                                        ))
+                                    )}
                                 </div>
 
                             </section>

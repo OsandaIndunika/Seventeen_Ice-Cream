@@ -15,13 +15,6 @@
   min-width: 0;
 }
 
-.header {
-  height: 50px;
-  background-color: #60dede;
-    margin-bottom: 10px;
-}
-
-
 .dashboard-body {
   display: flex;
   gap: 20px;
