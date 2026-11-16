@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-
+import ManagerPortal from "./manager/ManagerPortal";
 
 import {
   LayoutDashboard,
@@ -344,6 +344,17 @@ export default function App() {
     );
   }
   if (workspaceLoading) return <div className="ss-auth-check" role="status">Loading your factory workspace…</div>;
+
+
+  // MANAGER PORTAL
+  if (user.role === "Manager") {
+    return (
+      <ManagerPortal
+        user={user}
+        onLogout={handleLogout}
+      />
+    );
+  }
   return (
     <div className="app">
       <aside className={"sidebar " + (sidebar ? "show" : "")}>
