@@ -1,0 +1,119 @@
+
+.raw-history-view {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #E1EAF5;
+  box-shadow: 0 5px 18px rgba(30, 43, 75, 0.06);
+}
+
+.raw-history-view h3 {
+  margin: 0 0 24px;
+  color: #1E2B4B;
+  font-size: 20px;
+}
+
+/* Search and Date Filters */
+
+.usage-history-filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.usage-history-filters input {
+  flex: 1;
+  min-width: 180px;
+  padding: 12px;
+  border: 1px solid #DCE7F7;
+  border-radius: 9px;
+  background: #FFFFFF;
+  color: #334155;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.usage-history-filters input:focus {
+  outline: none;
+  border-color: #3554FF;
+  box-shadow: 0 0 0 3px rgba(53, 84, 255, 0.14);
+}
+
+.usage-clear-btn {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 9px;
+  background: #DCE7FF;
+  color: #3554FF;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.usage-clear-btn:hover {
+  background: #C9D9FF;
+  transform: translateY(-1px);
+}
+
+/* Usage History Table */
+
+.raw-history-view .material-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.raw-history-view .material-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.raw-history-view .material-table th {
+  padding: 12px;
+  color: #43536F;
+  background: #EAF3FF;
+  font-size: 12px;
+}
+
+.raw-history-view .material-table td {
+  padding: 12px;
+  color: #334155;
+  border-top: 1px solid #E6EDF7;
+  font-size: 13px;
+  background: #FFFFFF;
+}
+
+.raw-history-view .material-table tbody tr:hover td {
+  background: #F7FAFF;
+}
+
+.raw-history-view .usage-empty-message {
+  text-align: center;
+  padding: 30px !important;
+  color: #667085;
+}
+
+@media (max-width: 600px) {
+  .raw-history-view {
+    padding: 16px;
+  }
+
+  .usage-history-filters {
+    flex-direction: column;
+  }
+
+  .usage-history-filters input {
+    width: 100%;
+    min-width: 0;
+    flex: auto;
+  }
+
+  .usage-clear-btn {
+    width: 100%;
+  }
+}

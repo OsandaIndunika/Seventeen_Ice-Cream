@@ -8,45 +8,32 @@
   display: flex;
   width: 100%;
   min-height: 100vh;
-  background: #e3e3f7;
-  color: #233b40;
+  background: #F3F7FF;
+  color: #1E2B4B;
   font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
-.employee-dashboard{
+.employees-page .app-header {
+  background: #FFFFFF;
+  border-bottom-color: #E1EAF5;
+}
+
+.employees-page .header-left p,
+.employees-page .header-right h4 {
+  color: #1E2B4B;
+}
+
+.employees-page .header-center {
+  border-color: #DCE7F7;
+  background: #F3F7FF;
+  color: #43536F;
+}
+
+.employee-dashboard {
   display: grid;
   gap: 22px;
   padding: 18px 28px 32px;
 }
-
-
-.employee-page-buttons {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.employee-tab {
-  padding: 12px 22px;
-  background-color: #edf0ff;
-  color: #414be3;
-  border: 1px solid #cbd0f5;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.employee-tab.active {
-  background-color: #4c50e5;
-  color: white;
-  border-color: #4c50e5;
-}
-
-.employee-tab:hover {
-  opacity: 0.9;
-}
-
 
 .add-employee-page {
   width: 100%;
@@ -61,23 +48,25 @@
 
 .employee-details-panel,
 .fingerprint-panel {
-  background-color: #5184FF;
-  color: white;
+  background-color: #FFFFFF;
+  color: #1E2B4B;
   border-radius: 16px;
   padding: 18px;
+  border: 1px solid #E1EAF5;
+  box-shadow: 0 5px 18px rgba(30, 43, 75, 0.06);
 }
 
 .employee-details-panel h2,
 .fingerprint-panel h2 {
   margin: 0 0 12px;
   font-size: 1.2rem;
-  color: white;
+  color: #1E2B4B;
 }
 
 .employee-details-panel p,
 .fingerprint-panel p {
   font-size: 0.85rem;
-  color: #dce1ff;
+  color: #667085;
 }
 
 .add-employee-actions {
@@ -86,6 +75,7 @@
   gap: 12px;
   margin-top: 14px;
 }
+
 /* Employee Details Heading */
 
 .employee-panel-heading {
@@ -100,8 +90,8 @@
 }
 
 .employee-id-badge {
-  background-color: #f7ed91;
-  color: #25365c;
+  background-color: #EAF3FF;
+  color: #1E2B4B;
   padding: 4px 10px;
   border-radius: 20px;
   font-size: 0.7rem;
@@ -128,7 +118,7 @@
 }
 
 .employee-field label {
-  color: #dce1ff;
+  color: #43536F;
   font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -142,7 +132,7 @@
   padding: 11px 12px;
   background-color: #ffffff;
   color: #25365c;
-  border: 1px solid transparent;
+  border: 1px solid #DCE7F7;
   border-radius: 7px;
   font-size: 0.8rem;
   outline: none;
@@ -150,13 +140,15 @@
 
 .employee-field input:focus,
 .employee-field select:focus {
-  border-color: #91e5b2;
+  border-color: #3554FF;
+  box-shadow: 0 0 0 3px rgba(53, 84, 255, 0.14);
 }
 
 .employee-field input[readonly] {
-  background-color: #f2f4ff;
+  background-color: #F3F7FF;
   cursor: default;
 }
+
 /* Responsive Form */
 
 @media (max-width: 600px) {
@@ -185,7 +177,7 @@
 }
 
 .fingerprint-field label {
-  color: #dce1ff;
+  color: #43536F;
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -194,17 +186,18 @@
 .fingerprint-field select {
   width: 100%;
   padding: 11px 12px;
-  border: none;
+  border: 1px solid #DCE7F7;
   border-radius: 7px;
   background: #ffffff;
-  color: #25365c;
+  color: #334155;
   font-size: 0.8rem;
 }
 
 /* Scanner Area */
 
 .fingerprint-scanner {
-  background-color: #4c50e5;
+  background-color: #F3F7FF;
+  border: 1px solid #DCE7F7;
   border-radius: 14px;
   padding: 24px 12px;
   display: flex;
@@ -224,7 +217,7 @@
 }
 
 .fingerprint-ring {
-  border: 2px solid #91e5b2;
+  border: 2px solid #3554FF;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -239,39 +232,39 @@
 .ring-2 {
   width: 90px;
   height: 90px;
-  border-color: #a5f0e2;
+  border-color: #6F89FF;
 }
 
 .ring-3 {
   width: 70px;
   height: 70px;
-  border-color: #c0c8ff;
+  border-color: #A9C4FF;
 }
 
 .ring-4 {
   width: 50px;
   height: 50px;
-  border-color: #dce1ff;
+  border-color: #C6D8F3;
 }
 
 .ring-5 {
   width: 25px;
   height: 25px;
-  border-color: #ffffff;
+  border-color: #3554FF;
 }
 
 /* Scanner Text */
 
 .scanner-instruction {
   margin: 0;
-  color: #ffffff;
+  color: #1E2B4B;
   font-size: 0.8rem;
   font-weight: 600;
   text-align: center;
 }
 
 .scan-progress-text {
-  color: #a5f0e2;
+  color: #3554FF;
   font-size: 0.7rem;
 }
 
@@ -285,12 +278,12 @@
 .scan-progress-dots span {
   width: 9px;
   height: 9px;
-  background-color: #9299d6;
+  background-color: #A9C4FF;
   border-radius: 50%;
 }
 
 .scan-progress-dots .completed {
-  background-color: #91e5b2;
+  background-color: #3554FF;
 }
 
 /* Next Scan Button */
@@ -299,8 +292,8 @@
   width: 100%;
   margin-top: 12px;
   padding: 12px;
-  background-color: #91cfee;
-  color: #ffffff;
+  background-color: #3554FF;
+  color: #FFFFFF;
   border: none;
   border-radius: 8px;
   font-size: 0.85rem;
@@ -309,14 +302,14 @@
 }
 
 .next-scan-btn:hover {
-  background-color: #76bde2;
+  background-color: #2C49DC;
 }
 
 /* Fingerprint Note */
 
 .fingerprint-note {
   margin: 10px 0 0;
-  color: #dce1ff;
+  color: #667085;
   font-size: 0.65rem;
   line-height: 1.5;
 }
@@ -331,14 +324,14 @@
 }
 
 .cancel-employee-btn {
-  background: #f2f4ff;
-  color: #414be3;
-  border: 1px solid #cbd0f5;
+  background: #F3F7FF;
+  color: #3554FF;
+  border: 1px solid #DCE7F7;
 }
 
 .save-employee-btn {
-  background: #4c50e5;
-  color: white;
+  background: #3554FF;
+  color: #FFFFFF;
   border: none;
 }
 
@@ -351,6 +344,8 @@
   background-color: #ffffff;
   border-radius: 16px;
   padding: 22px;
+  border: 1px solid #E1EAF5;
+  box-shadow: 0 5px 18px rgba(30, 43, 75, 0.06);
 }
 
 /* Header */
@@ -365,21 +360,122 @@
 
 .employee-list-header h2 {
   margin: 0;
-  color: #233b40;
+  color: #1E2B4B;
   font-size: 1.2rem;
 }
 
 .employee-count {
-  color: #64748b;
+  color: #667085;
   font-size: 0.85rem;
 }
 
-/* Table */
+/* ==================================
+   EMPLOYEE PAGE NAVIGATION BUTTONS
+================================== */
 
-.employee-table-container {
+/* ===================================
+   EMPLOYEE NAVIGATION BUTTONS
+=================================== */
+
+.employee-page-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
   width: 100%;
-  overflow-x: auto;
 }
+
+/* Normal Buttons */
+
+.employee-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 58px;
+  padding: 14px 18px;
+
+  background: #FFFFFF;
+  color: #3554FF;
+
+  border: 1px solid #DCE7F7;
+  border-radius: 12px;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 12px rgba(30, 43, 75, 0.06);
+
+  transition: all 0.2s ease;
+}
+
+/* Icons */
+
+.employee-tab svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Hover */
+
+.employee-tab:hover:not(.active) {
+  background: #EAF3FF;
+  border-color: #B7CCFF;
+  transform: translateY(-2px);
+}
+
+/* Active Button */
+
+.employee-tab.active {
+  background: #3554FF;
+  color: #FFFFFF;
+  border-color: #3554FF;
+
+  box-shadow: 0 5px 14px rgba(53, 84, 255, 0.2);
+}
+
+/* Keyboard Focus */
+
+.employee-tab:focus-visible {
+  outline: 3px solid #A9C4FF;
+  outline-offset: 3px;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .employee-page-buttons {
+    gap: 10px;
+  }
+
+  .employee-tab {
+    padding: 12px 10px;
+    font-size: 0.8rem;
+    gap: 8px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .employee-page-buttons {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .employee-tab {
+    min-height: 50px;
+  }
+}
+
+
+/* Table */
 
 .employee-list-table {
   width: 100%;
@@ -389,21 +485,21 @@
 }
 
 .employee-list-table th {
-  background-color: #edf3fa;
-  color: #334155;
+  background-color: #EAF3FF;
+  color: #43536F;
   padding: 14px 12px;
   white-space: nowrap;
 }
 
 .employee-list-table td {
   padding: 14px 12px;
-  color: #475569;
-  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
+  border-bottom: 1px solid #E6EDF7;
   white-space: nowrap;
 }
 
 .employee-list-table tbody tr:hover {
-  background-color: #f8fafc;
+  background-color: #F7FAFF;
 }
 
 /* Action Buttons */
@@ -422,8 +518,8 @@
 }
 
 .employee-edit-btn {
-  background-color: #dcfce7;
-  color: #15803d;
+  background-color: #DCE7FF;
+  color: #3554FF;
 }
 
 
@@ -442,7 +538,7 @@
 }
 
 .employee-edit-btn:hover {
-  background-color: #bbf7d0;
+  background-color: #C9D9FF;
 }
 
 /* Empty Table */
@@ -464,11 +560,12 @@
   flex-wrap: wrap;
   gap: 12px;
 }
+
 .employee-shift-filter {
   padding: 11px 14px;
-  border: 1px solid #d5dfe8;
+  border: 1px solid #DCE7F7;
   border-radius: 8px;
-  background-color: #f8fafc;
+  background-color: #FFFFFF;
   color: #334155;
   font-size: 0.85rem;
   outline: none;
@@ -476,7 +573,8 @@
 }
 
 .employee-shift-filter:focus {
-  border-color: #6366f1;
+  border-color: #3554FF;
+  box-shadow: 0 0 0 3px rgba(53, 84, 255, 0.14);
 }
 
 
@@ -484,17 +582,18 @@
   width: 320px;
   max-width: 100%;
   padding: 11px 14px;
-  border: 1px solid #d5dfe8;
+  border: 1px solid #DCE7F7;
   border-radius: 8px;
-  background-color: #f8fafc;
+  background-color: #FFFFFF;
   color: #334155;
   font-size: 0.85rem;
   outline: none;
 }
 
 .employee-search-container input:focus {
-  border-color: #6366f1;
+  border-color: #3554FF;
   background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(53, 84, 255, 0.14);
 }
 
 @media (max-width: 600px) {
@@ -518,6 +617,7 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px
 }
+
 .scanner-summary-card {
   position: relative;
   display: flex;
@@ -528,13 +628,14 @@
   overflow: hidden;
   padding: 20px 24px;
   border-radius: 14px;
-  background: #b2d5f3;
-  box-shadow: 0 5px 18px rgba(31, 72, 78, 0.045);
+  background: #FFFFFF;
+  border: 1px solid #E1EAF5;
+  box-shadow: 0 5px 18px rgba(30, 43, 75, 0.06);
 }
 
 
 .scanner-summary-label {
-  color: #414be3;
+  color: #667085;
   font-size: 0.75rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -542,31 +643,32 @@
 }
 
 .scanner-summary-value {
- color: #314561;
+  color: #1E2B4B;
   font-size: 1.8rem;
   font-weight: 700;
 }
 
 .summary-description {
-  color: #6b6d9c;
+  color: #667085;
   font-size: 0.75rem;
   font-weight: 400;
 }
 
-.scanner-log{
+.scanner-log {
   display: grid;
-  grid-template-columns: minmax(0, 2.6fr) minmax(280px, 1fr);
+  grid-template-columns: minmax(0, 2.8fr) minmax(250px, 1fr);
   align-items: start;
   gap: 18px;
 }
 
 .fingerprint-log,
-.scanner-status{
+.scanner-status {
   min-width: 0;
   padding: 22px;
   background-color: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 5px 18px rgba(31, 72, 78, 0.08);
+  border: 1px solid #E1EAF5;
+  box-shadow: 0 5px 18px rgba(30, 43, 75, 0.06);
 }
 
 .section-heading {
@@ -579,7 +681,7 @@
 
 .section-heading h2 {
   margin: 0;
-  color: #263f44;
+  color: #1E2B4B;
   font-size: 1.08rem;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -587,14 +689,16 @@
 
 .section-heading p {
   margin: 6px 0 0;
-  color: #809194;
+  color: #667085;
   font-size: 0.85rem;
   line-height: 1.5;
 }
 
 .scan-table-wrap {
   width: 100%;
+  min-width: 0;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .scan-table {
@@ -605,13 +709,13 @@
 }
 
 .scan-table th {
-  padding: 12px 14px;
-  border-bottom: 1px solid #e5eded;
-  background: #d9dcf8;
-  color: #718589;
-  font-size: 0.73rem;
+  padding: 12px 9px;
+  border-bottom: 1px solid #DCE7F7;
+  background: #EAF3FF;
+  color: #43536F;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.055em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
@@ -623,30 +727,36 @@
   border-radius: 0 8px 0 0;
 }
 
+
 .scan-table td {
-  padding: 20px 14px;
-  border-bottom: 1px solid #edf2f2;
-  color: #53696d;
-  font-size: 0.88rem;
+  padding: 18px 9px;
+  border-bottom: 1px solid #E6EDF7;
+  color: #334155;
+  font-size: 0.8rem;
 }
+
 .scan-table .empty-state {
   padding: 35px 15px;
-  color: #8a9a9d;
+  color: #667085;
   text-align: center;
   font-size: 0.9rem;
   font-weight: 500;
   white-space: normal;
 }
 
+
 @media (max-width: 1200px) {
   .scanner-summary-container {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+}
 
+@media (max-width: 1000px) {
   .scanner-log {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
 
 @media (max-width: 600px) {
   .employee-dashboard {
@@ -660,6 +770,7 @@
   .section-heading {
     flex-direction: column;
   }
+
   .search-container {
     flex-wrap: wrap;
   }
@@ -676,32 +787,34 @@
 
 .scan-filter {
   padding: 12px 16px;
-  border: 1px solid #dce4ed;
+  border: 1px solid #DCE7F7;
   border-radius: 8px;
   background-color: #ffffff;
-  color: #25365c;
+  color: #334155;
   font-size: 0.85rem;
   cursor: pointer;
   outline: none;
 }
 
 .scan-filter:focus {
-  border-color: #4c50e5;
+  border-color: #3554FF;
+  box-shadow: 0 0 0 3px rgba(53, 84, 255, 0.14);
 }
 
 .date-filter {
   padding: 12px 14px;
-  border: 1px solid #dce4ed;
+  border: 1px solid #DCE7F7;
   border-radius: 8px;
   background-color: #ffffff;
-  color: #25365c;
+  color: #334155;
   font-size: 0.85rem;
   outline: none;
   cursor: pointer;
 }
 
 .date-filter:focus {
-  border-color: #4c50e5;
+  border-color: #3554FF;
+  box-shadow: 0 0 0 3px rgba(53, 84, 255, 0.14);
 }
 
 
@@ -719,24 +832,25 @@
   flex: 1;
   min-width: 0;
   padding: 12px 16px;
-  border: 1px solid #dce4ed;
+  border: 1px solid #DCE7F7;
   border-radius: 8px;
   outline: none;
   font-size: 0.85rem;
   background-color: #ffffff;
-  color:black;
+  color: #334155;
 }
 
 .search-input:focus {
-  border-color: #4c50e5;
+  border-color: #3554FF;
+  box-shadow: 0 0 0 3px rgba(53, 84, 255, 0.14);
 }
 
 /* Search Button */
 
 .search-btn {
   padding: 12px 24px;
-  background-color: #91e5b2;
-  color: #233b40;
+  background-color: #3554FF;
+  color: #FFFFFF;
   border: none;
   border-radius: 8px;
   font-size: 0.85rem;
@@ -745,7 +859,7 @@
 }
 
 .search-btn:hover {
-  background-color: #70d99b;
+  background-color: #2C49DC;
 }
 
 /* Entry Badge */
@@ -796,7 +910,7 @@
   align-items: center;
   gap: 12px;
   padding: 16px 0;
-  border-bottom: 1px solid #e5eded;
+  border-bottom: 1px solid #E6EDF7;
 }
 
 /* Online Indicator */
@@ -813,20 +927,20 @@
 
 .scanner-details h4 {
   margin: 0 0 5px;
-  color: #263f44;
+  color: #1E2B4B;
   font-size: 0.9rem;
   font-weight: 600;
 }
 
 .scanner-details p {
   margin: 0;
-  color: #809194;
+  color: #667085;
   font-size: 0.75rem;
 }
 
 .scanner-status h2 {
   margin: 0 0 20px;
-  color: #263f44;
+  color: #1E2B4B;
   font-size: 1.08rem;
   font-weight: 700;
 }
@@ -839,11 +953,10 @@
   margin-top: 20px;
   padding: 18px;
   border-radius: 12px;
-  background-color: #f2f4ff;
+  background-color: #EAF3FF;
 }
 
 .enrolled-employees strong {
-  color: #4c50e5;
+  color: #3554FF;
   font-size: 1.5rem;
 }
-

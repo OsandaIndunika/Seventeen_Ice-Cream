@@ -3,6 +3,7 @@ import './Employees.css'
 import SideBar from '../Components/SideBar/SideBar'
 import Header from '../Components/Header/Header'
 import { useState } from 'react'
+import { Fingerprint, UserRoundPlus, Users } from "lucide-react";
 
 function Employees() {
 
@@ -21,7 +22,8 @@ function Employees() {
   const [nextEmployeeNumber, setNextEmployeeNumber] = useState(87);
 
 
-const [employeeShiftFilter, setEmployeeShiftFilter] = useState("All");
+  const [employeeShiftFilter, setEmployeeShiftFilter] = useState("All");
+
 
 
 
@@ -127,7 +129,7 @@ const [employeeShiftFilter, setEmployeeShiftFilter] = useState("All");
       .map((employee) => employee.empId)
   ).size;
 
-  const notYetArrived = Math.max(0,totalShiftEmployees - arrivedEmployees);
+  const notYetArrived = Math.max(0, totalShiftEmployees - arrivedEmployees);
 
 
   const filteredEmployees = employees.filter((employee) => {
@@ -168,76 +170,76 @@ const [employeeShiftFilter, setEmployeeShiftFilter] = useState("All");
       return false;
     }
     // NIC format validation
-  const nicPattern = /^(\d{9}[VvXx]|\d{12})$/;
+    const nicPattern = /^(\d{9}[VvXx]|\d{12})$/;
 
-  if (!nicPattern.test(employeeForm.nic.trim())) {
-    alert("Please enter a valid Sri Lankan NIC number.");
-    return false;
-  }
+    if (!nicPattern.test(employeeForm.nic.trim())) {
+      alert("Please enter a valid Sri Lankan NIC number.");
+      return false;
+    }
 
-  // Sri Lankan mobile number validation
-  const phonePattern = /^(?:0|94|\+94)7\d{8}$/;
+    // Sri Lankan mobile number validation
+    const phonePattern = /^(?:0|94|\+94)7\d{8}$/;
 
-  const phone = employeeForm.phone.trim().replace(/[\s-]/g, "");
+    const phone = employeeForm.phone.trim().replace(/[\s-]/g, "");
 
-  if (!phonePattern.test(phone)) {
-    alert("Please enter a valid Sri Lankan mobile number.");
-    return false;
-  }
-
-
-  // Email format validation
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  const email = employeeForm.email.trim();
-
-  if (email && !emailPattern.test(email)) {
-    alert("Please enter a valid email address.");
-    return false;
-  }
+    if (!phonePattern.test(phone)) {
+      alert("Please enter a valid Sri Lankan mobile number.");
+      return false;
+    }
 
 
-  // Check duplicate NIC
-  const duplicateNIC = registeredEmployees.some((employee) => {
-    return (
-      employee.nic.trim().toUpperCase() ===
+    // Email format validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const email = employeeForm.email.trim();
+
+    if (email && !emailPattern.test(email)) {
+      alert("Please enter a valid email address.");
+      return false;
+    }
+
+
+    // Check duplicate NIC
+    const duplicateNIC = registeredEmployees.some((employee) => {
+      return (
+        employee.nic.trim().toUpperCase() ===
         employeeForm.nic.trim().toUpperCase() &&
-      employee.id !== editingEmployeeId
-    );
-  });
+        employee.id !== editingEmployeeId
+      );
+    });
 
-  if (duplicateNIC) {
-    alert("An employee with this NIC already exists.");
-    return false;
-  }
+    if (duplicateNIC) {
+      alert("An employee with this NIC already exists.");
+      return false;
+    }
 
 
-  // Date validation
-  const today = new Date().toLocaleDateString("en-CA");
+    // Date validation
+    const today = new Date().toLocaleDateString("en-CA");
 
-  // Check Date of Birth
-  if (
-    employeeForm.dateOfBirth &&
-    employeeForm.dateOfBirth > today
-  ) {
-    alert("Date of Birth cannot be in the future.");
-    return false;
-  }
+    // Check Date of Birth
+    if (
+      employeeForm.dateOfBirth &&
+      employeeForm.dateOfBirth > today
+    ) {
+      alert("Date of Birth cannot be in the future.");
+      return false;
+    }
 
-  // Check Join Date
-  if (employeeForm.joinDate > today) {
-    alert("Join Date cannot be in the future.");
-    return false;
-  }
+    // Check Join Date
+    if (employeeForm.joinDate > today) {
+      alert("Join Date cannot be in the future.");
+      return false;
+    }
 
-  // Compare Date of Birth and Join Date
-  if (
-    employeeForm.dateOfBirth &&
-    employeeForm.joinDate < employeeForm.dateOfBirth
-  ) {
-    alert("Join Date cannot be before Date of Birth.");
-    return false;
-  }
+    // Compare Date of Birth and Join Date
+    if (
+      employeeForm.dateOfBirth &&
+      employeeForm.joinDate < employeeForm.dateOfBirth
+    ) {
+      alert("Join Date cannot be before Date of Birth.");
+      return false;
+    }
 
 
 
@@ -312,23 +314,23 @@ const [employeeShiftFilter, setEmployeeShiftFilter] = useState("All");
 
 
 
-  
-const filteredRegisteredEmployees = registeredEmployees.filter((employee) => {
 
-  const searchText = employeeSearch.toLowerCase();
+  const filteredRegisteredEmployees = registeredEmployees.filter((employee) => {
 
-  const matchesSearch =
-    employee.employeeId.toLowerCase().includes(searchText) ||
-    employee.fullName.toLowerCase().includes(searchText) ||
-    employee.position.toLowerCase().includes(searchText);
+    const searchText = employeeSearch.toLowerCase();
 
-  const matchesShift =
-    employeeShiftFilter === "All" ||
-    employee.shift === employeeShiftFilter;
+    const matchesSearch =
+      employee.employeeId.toLowerCase().includes(searchText) ||
+      employee.fullName.toLowerCase().includes(searchText) ||
+      employee.position.toLowerCase().includes(searchText);
 
-  return matchesSearch && matchesShift;
+    const matchesShift =
+      employeeShiftFilter === "All" ||
+      employee.shift === employeeShiftFilter;
 
-});
+    return matchesSearch && matchesShift;
+
+  });
 
 
   const handleEditEmployee = (employee) => {
@@ -385,8 +387,11 @@ const filteredRegisteredEmployees = registeredEmployees.filter((employee) => {
         <Header headername="Employees" />
         <div className='employee-dashboard'>
 
+
           <div className="employee-page-buttons">
+
             <button
+              type="button"
               className={
                 activeSection === "details"
                   ? "employee-tab active"
@@ -394,10 +399,12 @@ const filteredRegisteredEmployees = registeredEmployees.filter((employee) => {
               }
               onClick={() => setActiveSection("details")}
             >
-              Attendance Details
+              <Fingerprint size={20} />
+              <span>Attendance Details</span>
             </button>
 
             <button
+              type="button"
               className={
                 activeSection === "add"
                   ? "employee-tab active"
@@ -408,10 +415,12 @@ const filteredRegisteredEmployees = registeredEmployees.filter((employee) => {
                 setActiveSection("add");
               }}
             >
-              Add Employee
+              <UserRoundPlus size={20} />
+              <span>Add Employee</span>
             </button>
 
             <button
+              type="button"
               className={
                 activeSection === "employeeList"
                   ? "employee-tab active"
@@ -419,9 +428,12 @@ const filteredRegisteredEmployees = registeredEmployees.filter((employee) => {
               }
               onClick={() => setActiveSection("employeeList")}
             >
-              Employee Details
+              <Users size={20} />
+              <span>Employee Details</span>
             </button>
+
           </div>
+
 
           {activeSection === "details" && (
             <>
@@ -581,8 +593,8 @@ const filteredRegisteredEmployees = registeredEmployees.filter((employee) => {
                       {editingEmployeeId !== null
                         ? employeeForm.employeeId
                         : `EMP-${String(nextEmployeeNumber).padStart(4, "0")}`}
-                    </span>                  
-                    </div>
+                    </span>
+                  </div>
 
                   <div className="employee-details-form">
 
@@ -822,15 +834,15 @@ const filteredRegisteredEmployees = registeredEmployees.filter((employee) => {
                   onChange={(e) => setEmployeeSearch(e.target.value)}
                 />
                 <select
-    value={employeeShiftFilter}
-    onChange={(e) => setEmployeeShiftFilter(e.target.value)}
-    className="employee-shift-filter"
-  >
-    <option value="All">All Shifts</option>
-    <option value="Morning">Morning</option>
-    <option value="Evening">Evening</option>
-    <option value="Night">Night</option>
-  </select>
+                  value={employeeShiftFilter}
+                  onChange={(e) => setEmployeeShiftFilter(e.target.value)}
+                  className="employee-shift-filter"
+                >
+                  <option value="All">All Shifts</option>
+                  <option value="Morning">Morning</option>
+                  <option value="Evening">Evening</option>
+                  <option value="Night">Night</option>
+                </select>
 
               </div>
 

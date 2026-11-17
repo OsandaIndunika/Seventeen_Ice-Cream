@@ -1,0 +1,193 @@
+
+.past-bills {
+  min-width: 0;
+  padding: 22px;
+  background: #FFFFFF;
+  color: #1E2B4B;
+  border-radius: 18px;
+  border: 1px solid #E1EAF5;
+  box-shadow: 0 12px 28px rgba(30, 43, 75, 0.08);
+  box-sizing: border-box;
+}
+
+.past-bills h3 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Search and Filter */
+
+.past-bills-filters {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.past-bills-filters input,
+.past-bills-filters select {
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #DCE7F7;
+  border-radius: 7px;
+  background: white;
+  color: #334155;
+  font-size: 11px;
+}
+
+.past-bills-filters input:focus,
+.past-bills-filters select:focus {
+  border-color: #3554FF;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(53, 84, 255, 0.14);
+}
+
+/* Bill Grid */
+
+.past-bills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.past-bill-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px;
+  max-width: 300px;
+  background: #FFFFFF;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #E1EAF5;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(30, 43, 75, 0.06);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.past-bill-card:hover {
+  transform: translateY(-3px);
+  background: #F7FAFF;
+  border-color: #B7CCFF;
+}
+
+/* Uploaded Receipt */
+
+.bill-receipt-placeholder {
+  width: 100%;
+  height: 150px;
+  background: #F3F7FF;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.past-bill-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.past-bill-pdf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #3554FF;
+}
+
+.past-bill-pdf span {
+  font-size: 36px;
+}
+
+.past-bill-pdf p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.bill-receipt-placeholder > p {
+  color: #667085;
+  font-size: 12px;
+}
+
+/* Bill Information */
+
+.past-bill-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+}
+
+.past-bill-info span {
+  color: #3554FF;
+  font-weight: 600;
+}
+
+.past-bill-supplier {
+  margin: 0;
+  font-size: 10px;
+  color: #1E2B4B;
+}
+
+.past-bill-details {
+  margin: 0;
+  font-size: 9px;
+  color: #667085;
+}
+
+/* View Bill Button */
+
+.view-bill-btn {
+  width: 100%;
+  margin-top: auto;
+  padding: 11px;
+  background: #DCE7FF;
+  color: #3554FF;
+  border: 1px solid #B7CCFF;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.view-bill-btn:hover {
+  background: #C9D9FF;
+}
+
+.no-bills-message {
+  grid-column: 1 / -1;
+  color: #667085;
+  font-size: 13px;
+}
+
+/* Responsive */
+
+@media (max-width: 1200px) {
+  .past-bills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .past-bills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .past-bills-filters {
+    grid-template-columns: 1fr;
+  }
+}

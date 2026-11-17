@@ -9,6 +9,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import RawMaterial from './Pages/RawMaterial.jsx'
+import Delivery from './Pages/Delivery.jsx'
+import Outlets from './Pages/Outlet.jsx'
 
 const router = createBrowserRouter([
   { path:"/",
@@ -27,7 +29,14 @@ const router = createBrowserRouter([
 {
     path:"/raw-materials",
     element:<RawMaterial />
-}
+},
+{
+    path:"/outlet",
+    element:<Outlets />
+},
+{ path:"/delivery",
+    element:<Delivery />
+},
 ]);
 
 createRoot(document.getElementById('root')).render(

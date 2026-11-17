@@ -1,0 +1,137 @@
+
+.remaining-materials {
+  min-width: 0;
+  padding: 22px;
+  background: #FFFFFF;
+  color: #1E2B4B;
+  border-radius: 18px;
+  border: 1px solid #E1EAF5;
+  box-shadow: 0 12px 28px rgba(30, 43, 75, 0.08);
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+}
+
+.remaining-materials-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.remaining-materials-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.add-material-btn {
+  background: #3554FF;
+  color: #FFFFFF;
+  border: 1px solid #3554FF;
+  border-radius: 9px;
+  padding: 10px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.add-material-btn:hover {
+  background: #2C49DC;
+  transform: translateY(-1px);
+}
+
+.material-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.material-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.material-table th {
+  padding: 12px 10px;
+  color: #43536F;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  background: #EAF3FF;
+}
+
+.material-table td {
+  padding: 14px 10px;
+  border-top: 1px solid #E6EDF7;
+  white-space: nowrap;
+  background: #FFFFFF;
+}
+
+.material-table tbody tr:hover td {
+  background: #F7FAFF;
+}
+
+.stock-progress {
+  width: 75px;
+  height: 6px;
+  background: #A9C4FF;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.stock-progress-fill {
+  height: 100%;
+  background: #83e6b0;
+  border-radius: 10px;
+}
+
+.stock-progress-fill.low {
+  background: #ffc56c;
+}
+
+.stock-progress-fill.critical {
+  background: #ff8585;
+}
+
+.stock-status {
+  display: inline-block;
+  padding: 4px 9px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.stock-status.good {
+  background: #a5e5bb;
+  color: #155d35;
+}
+
+.stock-status.low {
+  background: #fff08a;
+  color: #6b5300;
+}
+
+.stock-status.critical {
+  background: #ffb0b0;
+  color: #8b2020;
+}
+
+.material-add-btn {
+  background: transparent;
+  color: #3554FF;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.material-add-btn:hover {
+  color: #2C49DC;
+  text-decoration: underline;
+}

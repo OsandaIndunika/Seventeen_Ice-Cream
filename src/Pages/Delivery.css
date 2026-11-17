@@ -1,0 +1,573 @@
+
+/* ========================================
+   DELIVERY PAGE - MAIN LAYOUT
+======================================== */
+
+.delivery-page {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    background: #F3F7FF;
+    color: #1E2B4B;
+    font-family: Inter, "Segoe UI", system-ui, sans-serif;
+}
+
+.delivery-page .app-header {
+    background: #FFFFFF;
+    border-bottom-color: #E1EAF5;
+}
+
+.delivery-page .header-left p,
+.delivery-page .header-right h4 {
+    color: #1E2B4B;
+}
+
+.delivery-page .header-center {
+    border-color: #DCE7F7;
+    background: #F3F7FF;
+    color: #43536F;
+}
+
+.delivery-page .main-content {
+    flex: 1;
+    min-width: 0;
+    min-height: 100vh;
+}
+
+/* ========================================
+   DELIVERY DASHBOARD
+======================================== */
+
+.delivery-dashboard {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    padding: 18px 28px 32px;
+    align-items: start;
+}
+
+/* ========================================
+   SUMMARY CARDS
+======================================== */
+
+.delivery-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.delivery-summary-card {
+    min-width: 0;
+    min-height: 112px;
+    box-sizing: border-box;
+    padding: 20px 24px;
+    border-radius: 14px;
+    border: 1px solid #E1EAF5;
+    background: #FFFFFF;
+    color: #1E2B4B;
+    box-shadow: 0 5px 18px rgba(30, 43, 75, 0.06);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+}
+
+.delivery-summary-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #667085;
+}
+
+.delivery-summary-value {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.delivery-summary-detail {
+    font-size: 12px;
+    color: #667085;
+}
+
+/* ========================================
+   VEHICLE SALES CARD
+======================================== */
+
+.vehicle-sales-card {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 22px;
+    background: #FFFFFF;
+    border-radius: 14px;
+    border: 1px solid #E1EAF5;
+    color: #1E2B4B;
+    box-shadow: 0 5px 18px rgba(30, 43, 75, 0.06);
+}
+
+.vehicle-sales-heading {
+    margin-bottom: 20px;
+}
+
+.vehicle-sales-heading h2 {
+    margin: 0;
+    color: #1E2B4B;
+    font-size: 1.08rem;
+    font-weight: 700;
+}
+
+.vehicle-sales-heading p {
+    margin: 6px 0 0;
+    color: #667085;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* ========================================
+   VEHICLE SALES TABLE
+======================================== */
+
+.vehicle-sales-table-wrap {
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+}
+
+.vehicle-sales-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    white-space: nowrap;
+    background: #FFFFFF;
+}
+
+.vehicle-sales-table th {
+    padding: 12px 14px;
+    border-bottom: 1px solid #DCE7F7;
+    background: #EAF3FF;
+    color: #43536F;
+    font-size: 0.73rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.vehicle-sales-table td {
+    padding: 18px 14px;
+    border-bottom: 1px solid #E6EDF7;
+    color: #334155;
+    font-size: 0.85rem;
+}
+
+.vehicle-sales-table tbody tr:hover {
+    background: #F7FAFF;
+}
+
+.vehicle-sales-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ========================================
+   WEEKLY SALES CARD
+======================================== */
+
+.weekly-sales-card {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 22px;
+    background: #FFFFFF;
+    border-radius: 14px;
+    border: 1px solid #E1EAF5;
+    color: #1E2B4B;
+    box-shadow: 0 5px 18px rgba(30, 43, 75, 0.06);
+}
+
+.weekly-sales-heading {
+    margin-bottom: 20px;
+}
+
+.weekly-sales-heading h2 {
+    margin: 0;
+    color: #1E2B4B;
+    font-size: 1.08rem;
+    font-weight: 700;
+}
+
+.weekly-sales-heading p {
+    margin: 6px 0 0;
+    color: #667085;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* ========================================
+   WEEKLY SALES CHART
+======================================== */
+
+.weekly-sales-chart {
+    width: 100%;
+    min-width: 0;
+    height: 300px;
+}
+
+.weekly-sales-chart .recharts-cartesian-grid line {
+    stroke: #DCE7F7;
+}
+
+.weekly-sales-chart .recharts-cartesian-axis-line,
+.weekly-sales-chart .recharts-cartesian-axis-tick-line {
+    stroke: #A9C4FF;
+}
+
+.weekly-sales-chart .recharts-cartesian-axis-tick text {
+    fill: #667085;
+}
+
+.weekly-sales-chart .recharts-bar-rectangle path {
+    fill: #A9C4FF;
+}
+
+.weekly-sales-chart .recharts-line-curve,
+.weekly-sales-chart .recharts-line-dot {
+    stroke: #3554FF;
+}
+
+.weekly-sales-chart .recharts-line-dot {
+    fill: #3554FF;
+}
+
+.weekly-sales-chart .recharts-default-tooltip {
+    border: 1px solid #DCE7F7 !important;
+    border-radius: 8px;
+    background: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(30, 43, 75, 0.1);
+}
+
+/* ========================================
+   RESPONSIVE - TABLET
+   Screens up to 1024px
+======================================== */
+
+@media (max-width: 1024px) {
+
+    .delivery-dashboard {
+        padding: 18px 20px 28px;
+    }
+
+    .delivery-summary {
+        gap: 12px;
+    }
+
+    .delivery-summary-card {
+        padding: 16px;
+    }
+}
+
+/* ========================================
+   RESPONSIVE - SMALL TABLET
+   Screens up to 768px
+======================================== */
+
+@media (max-width: 768px) {
+
+    .delivery-dashboard {
+        padding: 14px;
+        gap: 16px;
+    }
+
+    .delivery-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .vehicle-sales-card,
+    .weekly-sales-card {
+        padding: 18px;
+    }
+
+    .vehicle-sales-table th,
+    .vehicle-sales-table td {
+        padding: 12px 10px;
+    }
+}
+
+/* ========================================
+   RESPONSIVE - MOBILE
+   Screens up to 600px
+======================================== */
+
+@media (max-width: 600px) {
+
+    .delivery-summary {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .delivery-summary-card {
+        min-height: 100px;
+        padding: 16px;
+    }
+
+    .delivery-summary-value {
+        font-size: 24px;
+    }
+
+    .vehicle-sales-card,
+    .weekly-sales-card {
+        padding: 16px;
+    }
+
+    .weekly-sales-chart {
+        height: 250px;
+    }
+
+    .vehicle-sales-heading h2,
+    .weekly-sales-heading h2 {
+        font-size: 1rem;
+    }
+}
+
+/* ========================================
+   SHOP DISTRIBUTION DETAILS
+======================================== */
+
+.shop-distribution-card {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 22px;
+    background: #FFFFFF;
+    border-radius: 14px;
+    border: 1px solid #E1EAF5;
+    color: #1E2B4B;
+    box-shadow: 0 5px 18px rgba(30, 43, 75, 0.06);
+}
+
+.shop-distribution-heading {
+    margin-bottom: 20px;
+}
+
+.shop-distribution-heading h2 {
+    margin: 0;
+    color: #1E2B4B;
+    font-size: 1.08rem;
+    font-weight: 700;
+}
+
+.shop-distribution-heading p {
+    margin: 6px 0 0;
+    color: #667085;
+    font-size: 0.85rem;
+}
+
+/* Table */
+
+.shop-distribution-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.shop-distribution-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    white-space: nowrap;
+    background: #FFFFFF;
+}
+
+.shop-distribution-table th {
+    padding: 12px 14px;
+    border-bottom: 1px solid #DCE7F7;
+    background: #EAF3FF;
+    color: #43536F;
+    font-size: 0.73rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.shop-distribution-table td {
+    padding: 16px 14px;
+    border-bottom: 1px solid #E6EDF7;
+    font-size: 0.85rem;
+    color: #334155;
+}
+
+.shop-distribution-table tbody tr:hover {
+    background: #F7FAFF;
+}
+
+.shop-distribution-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Status Badges */
+
+.distribution-status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-delivered {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-transit {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.status-pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+    .shop-distribution-card {
+        padding: 16px;
+    }
+
+    .shop-distribution-table th,
+    .shop-distribution-table td {
+        padding: 12px 10px;
+    }
+}
+
+
+/* Shop Distribution Filters */
+
+.shop-distribution-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.shop-distribution-filters select {
+    flex: 1;
+    min-width: 150px;
+    max-width: 240px;
+    padding: 10px 12px;
+    border: 1px solid #d5d9ff;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #233b40;
+    font-size: 13px;
+    cursor: pointer;
+    outline: none;
+}
+
+.shop-distribution-filters select:focus {
+    border-color: #3554FF;
+    box-shadow: 0 0 0 3px rgba(53, 84, 255, 0.14);
+}
+
+.distribution-empty {
+    text-align: center;
+    padding: 24px !important;
+    color: #667085;
+}
+
+/* Date Filter */
+
+
+.distribution-date-filter {
+    flex: 1;
+    min-width: 150px;
+    max-width: 240px;
+    padding: 10px 12px;
+    border: 1px solid #d5d9ff;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #233b40;
+    font-size: 13px;
+    outline: none;
+    cursor: pointer;
+    color-scheme: light;
+}
+
+/* Calendar Icon */
+.distribution-date-filter::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 1;
+    width: 18px;
+    height: 18px;
+}
+
+.distribution-date-filter:focus {
+    border-color: #3554FF;
+    box-shadow: 0 0 0 3px rgba(53, 84, 255, 0.14);
+}
+
+
+
+/* Distribution Results */
+
+.distribution-results {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+    color: #667085;
+    font-size: 13px;
+}
+
+.distribution-results strong {
+    font-size: 14px;
+    color: #1E2B4B;
+}
+
+/* Clear Filters Button */
+
+.distribution-clear-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 1px solid #3554FF;
+    border-radius: 8px;
+    background: #3554FF;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.distribution-clear-btn:hover {
+    background: #2C49DC;
+}
+
+.distribution-clear-btn svg {
+    flex-shrink: 0;
+}
+
+/* Summary Card Icons */
+
+.delivery-summary-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.delivery-summary-top svg {
+    flex-shrink: 0;
+    color: #3554FF;
+    opacity: 0.9;
+}
+
+.delivery-summary-label {
+    line-height: 1.4;
+}
