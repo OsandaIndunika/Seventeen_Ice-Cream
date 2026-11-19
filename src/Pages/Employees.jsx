@@ -3,7 +3,7 @@ import './Employees.css'
 import SideBar from '../Components/SideBar/SideBar'
 import Header from '../Components/Header/Header'
 import { useState } from 'react'
-import { Fingerprint, UserRoundPlus, Users } from "lucide-react";
+import { Fingerprint, UserRoundPlus, Users, ScanLine, Clock3, UserRoundX, UserCheck } from "lucide-react";
 
 function Employees() {
 
@@ -384,7 +384,7 @@ function Employees() {
 
       <main className='main-content'>
         {/* Header */}
-        <Header headername="Employees" />
+        <Header headername="Employees" description="Manage employee information"/>
         <div className='employee-dashboard'>
 
 
@@ -442,6 +442,7 @@ function Employees() {
               <section className='scanner-summary-container' aria-label='Price overview'>
 
                 <div className='scanner-summary-card'>
+                  <div className="scanner-summary-icon"><UserCheck size={24} strokeWidth={2.2} /></div>
                   <span className='scanner-summary-label'>Inside Factory now</span>
                   <strong className='scanner-summary-value'>{insideFactory}</strong>
                   <span className='summary-description'>of 30 on today's shift</span>
@@ -449,18 +450,21 @@ function Employees() {
 
 
                 <div className='scanner-summary-card'>
+                  <div className="scanner-summary-icon"><ScanLine size={24} strokeWidth={2.2} /></div>
                   <span className='scanner-summary-label'>Scans today</span>
                   <strong className='scanner-summary-value'> {scansToday}</strong>
                   <span className='summary-description'>Entries and Exits</span>
                 </div>
 
                 <div className='scanner-summary-card'>
+                  <div className="scanner-summary-icon"><Clock3 size={24} strokeWidth={2.2} /></div>
                   <span className='scanner-summary-label'>Later arivals</span>
                   <strong className='scanner-summary-value'>{lateArrivals}</strong>
                   <span className='summary-description'>after 8.15 AM</span>
                 </div>
 
                 <div className='scanner-summary-card'>
+                  <div className="scanner-summary-icon"><UserRoundX size={24} strokeWidth={2.2} /></div>
                   <span className='scanner-summary-label'>Not yet Arived</span>
                   <strong className='scanner-summary-value  '>{notYetArrived}</strong>
                   <span className='summary-description'>Check absence</span>

@@ -531,3 +531,22 @@
     font-size: 0.82rem;
     font-weight: 600;
 }
+/* Material Track - Pastel Blue */
+.material-summary-card:nth-child(1) {
+  background: linear-gradient(115deg, #f0f6ff, #e0ecff);
+}
+
+/* Low Stock Alert - Pastel Purple */
+.material-summary-card:nth-child(2) {
+  background: linear-gradient(115deg, #f7f0ff, #eae0ff);
+}
+
+/* Spend This Month - Pastel Green */
+.material-summary-card:nth-child(3) {
+  background: linear-gradient(115deg, #effffb, #daf7ee);
+}
+
+/* Bills Saved - Pastel Orange */
+.material-summary-card:nth-child(4) {
+  background: linear-gradient(115deg, #fff7ef, #ffeadb);
+}

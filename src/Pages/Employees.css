@@ -960,3 +960,91 @@
   color: #3554FF;
   font-size: 1.5rem;
 }
+
+/* =============================================================
+   SICMS ADMIN DASHBOARD THEME — Employees page
+   Presentation-only overrides; original functionality unchanged.
+   ============================================================= */
+.employees-page {
+  --emp-blue:#2c78f7;
+  --emp-purple:#9139ee;
+  --emp-green:#08b992;
+  --emp-orange:#ff9437;
+  background:#f3f7ff;
+  color:#14254a;
+}
+.employees-page .employee-dashboard {gap:20px;padding:23px 26px 42px;max-width:1800px;margin:0 auto;width:100%;}
+.employees-page .scanner-summary-container {gap:16px;}
+.employees-page .scanner-summary-card {
+  --accent:var(--emp-blue);--subtitle:#2465bd;
+  display:grid;grid-template-columns:54px minmax(0,1fr);
+  grid-template-rows:auto auto auto;align-content:center;align-items:center;
+  column-gap:14px;row-gap:4px;min-height:139px;padding:19px 17px;
+  border-radius:18px;border:1px solid #e0e8fa;
+  background:linear-gradient(115deg,#f0f6ff,#e0ecff);
+  box-shadow:0 5px 15px rgba(25,57,110,.055);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.employees-page .scanner-summary-card:nth-child(2){--accent:var(--emp-purple);--subtitle:#7831c8;background:linear-gradient(115deg,#f7f0ff,#eae0ff)}
+.employees-page .scanner-summary-card:nth-child(3){--accent:var(--emp-orange);--subtitle:#bd6b19;background:linear-gradient(115deg,#fff7ef,#ffeadb)}
+.employees-page .scanner-summary-card:nth-child(4){--accent:var(--emp-green);--subtitle:#078763;background:linear-gradient(115deg,#effffb,#daf7ee)}
+.employees-page .scanner-summary-card:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(25,57,110,.10)}
+.employees-page .scanner-summary-icon {
+  grid-column:1;grid-row:1/4;width:54px;height:54px;border-radius:50%;
+  display:grid;place-items:center;background:var(--accent);color:white;
+  box-shadow:0 6px 14px rgba(0,0,0,.07);
+}
+.employees-page .scanner-summary-label{grid-column:2;grid-row:1;font-size:13px;font-weight:700;letter-spacing:0;text-transform:none;color:#203153;line-height:1.35}
+.employees-page .scanner-summary-value{grid-column:2;grid-row:2;font-size:31px;letter-spacing:-.7px;line-height:1.15;color:#14254a}
+.employees-page .summary-description{grid-column:2;grid-row:3;color:var(--subtitle);font-size:11px;font-weight:600;line-height:1.4}
+.employees-page .fingerprint-log,
+.employees-page .scanner-status,
+.employees-page .employee-list-page,
+.employees-page .employee-details-panel,
+.employees-page .fingerprint-panel {
+  border-radius:18px;border:1px solid #e2eaf6;
+  box-shadow:0 5px 18px rgba(28,58,110,.055);
+}
+.employees-page .employee-tab{border-radius:14px;border-color:#dce5f5;color:#276bf0;box-shadow:0 5px 15px rgba(28,58,110,.05)}
+.employees-page .employee-tab.active{background:linear-gradient(120deg,#388cff,#276bf0);color:white;border-color:#347af0;box-shadow:0 6px 15px rgba(39,107,240,.2)}
+.employees-page .employee-tab:hover:not(.active){background:#eaf2ff;border-color:#bdd5ff}
+.employees-page .scan-table th,
+.employees-page .employee-list-table th{background:#edf4ff;color:#304366;font-weight:700}
+.employees-page .scan-table tbody tr:hover,
+.employees-page .employee-list-table tbody tr:hover{background:#f7faff}
+.employees-page .search-btn,
+.employees-page .save-employee-btn,
+.employees-page .next-scan-btn{background:linear-gradient(120deg,#388cff,#276bf0);border-radius:10px;box-shadow:0 5px 12px rgba(39,107,240,.14)}
+.employees-page .search-btn:hover,
+.employees-page .save-employee-btn:hover,
+.employees-page .next-scan-btn:hover{background:#215bd0}
+.employees-page .employee-field input,
+.employees-page .employee-field select,
+.employees-page .employee-search-container input,
+.employees-page .employee-shift-filter,
+.employees-page .search-input,
+.employees-page .date-filter,
+.employees-page .scan-filter,
+.employees-page .fingerprint-field select{border-radius:10px;border-color:#dce5f5}
+.employees-page .employee-id-badge,
+.employees-page .enrolled-employees{background:#eaf2ff;color:#276bf0}
+.employees-page .fingerprint-scanner{background:linear-gradient(145deg,#f5f9ff,#eaf2ff);border-radius:16px}
+.employees-page .entry-badge,
+.employees-page .ontime-badge{background:#daf7ee;color:#078763}
+.employees-page .exit-badge{background:#e0ecff;color:#276bf0}
+.employees-page .late-badge{background:#ffeadb;color:#a95413}
+.employees-page .employee-edit-btn{background:#e0ecff;color:#276bf0;border-radius:8px}
+.employees-page .employee-delete-btn{background:#fff0f1;color:#d33b47;border-radius:8px}
+.employees-page .scanner-dot{background:#08b992}
+@media(max-width:1450px){.employees-page .scanner-summary-container{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){
+  .employees-page .employee-dashboard{padding:14px;gap:14px}
+  .employees-page .scanner-summary-container{gap:10px}
+  .employees-page .scanner-summary-card{grid-template-columns:40px minmax(0,1fr);column-gap:9px;padding:13px 10px;min-height:116px}
+  .employees-page .scanner-summary-icon{width:40px;height:40px}
+  .employees-page .scanner-summary-icon svg{width:20px;height:20px}
+  .employees-page .scanner-summary-label{font-size:11px}
+  .employees-page .scanner-summary-value{font-size:25px}
+  .employees-page .summary-description{font-size:10px}
+}
+@media(max-width:400px){.employees-page .scanner-summary-container{grid-template-columns:1fr}}

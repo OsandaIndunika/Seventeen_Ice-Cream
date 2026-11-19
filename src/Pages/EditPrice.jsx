@@ -155,7 +155,7 @@ function EditPrice() {
 
             <main className='main-content'>
                 {/* Header */}
-                <Header headername="Edit Price" />
+                <Header headername="Edit Price" description="Update product prices and review pricing history." />
 
                 <div className='price-dashboard'>
                     <section className='price-summary' aria-label='Price overview'>
@@ -229,16 +229,16 @@ function EditPrice() {
                                     ))}
                                 </select>
 
-<button
-    type="button"
-    className="price-clear-filter-btn"
-    onClick={() => {
-        setFilterFlavour("all");
-        setFilterProductType("all");
-    }}
->
-    Clear Filters
-</button>
+                                <button
+                                    type="button"
+                                    className="price-clear-filter-btn"
+                                    onClick={() => {
+                                        setFilterFlavour("all");
+                                        setFilterProductType("all");
+                                    }}
+                                >
+                                    Clear Filters
+                                </button>
 
 
                             </div>

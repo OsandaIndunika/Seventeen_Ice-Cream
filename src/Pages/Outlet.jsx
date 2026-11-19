@@ -281,7 +281,7 @@ function Outlets() {
         <div className="outlets-page">
             <SideBar />
             <main className="main-content">
-                <Header headername="Outlets" />
+                <Header headername="Outlets" description="Manage outlet information."/>
                 <div className="outlets-dashboard">
                     <section className="outlets-summary" aria-label="Outlet overview">
                         <div className="outlets-summary-card">

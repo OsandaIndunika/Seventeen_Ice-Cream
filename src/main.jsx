@@ -11,10 +11,13 @@ import {
 import RawMaterial from './Pages/RawMaterial.jsx'
 import Delivery from './Pages/Delivery.jsx'
 import Outlets from './Pages/Outlet.jsx'
+import BatchManagement from './Pages/BatchManagement.jsx'
+import Dashboard from './Pages/Dashboard.jsx'
+
 
 const router = createBrowserRouter([
   { path:"/",
-    element:<App/>
+    element:<Dashboard />
 },
 { path:"/production",
     element:<Production/>
@@ -37,6 +40,10 @@ const router = createBrowserRouter([
 { path:"/delivery",
     element:<Delivery />
 },
+{ path:"/batch-management",
+    element:<BatchManagement />
+},
+
 ]);
 
 createRoot(document.getElementById('root')).render(

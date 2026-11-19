@@ -15,9 +15,13 @@ function Header(props) {
     return (
         <>
             <div className='app-header'>
-                <div className='header-left'>
-                    <p>
+                <div className="header-left">
+                    <p className="header-title">
                         {props.headername}
+                    </p>
+
+                    <p className="header-description">
+                        {props.description}
                     </p>
                 </div>
 

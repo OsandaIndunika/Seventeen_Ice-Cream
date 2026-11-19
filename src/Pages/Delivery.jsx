@@ -166,7 +166,7 @@ const deliverySalesToday = 3420;
             <SideBar />
 
             <main className='main-content'>
-                <Header headername="Delivery" />
+                <Header headername="Delivery" description="Manage delivery vehicles"/>
 
                 <div className="delivery-dashboard">
 

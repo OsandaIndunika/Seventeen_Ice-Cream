@@ -214,7 +214,7 @@ function RawMaterial() {
         <div className='raw-material-page'>
             <SideBar />
             <div className='main-content'>
-                <Header headername="Raw Material" />
+                <Header headername="Raw Material" description="Track raw material stock, purchases and daily usage." />
                 <div className='raw-material-dashboard'>
                     {/* Summery card section */}
                     {activeView === "dashboard" && (
