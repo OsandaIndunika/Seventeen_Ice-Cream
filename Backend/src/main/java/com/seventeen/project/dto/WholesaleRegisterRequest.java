@@ -1,0 +1,32 @@
+
+package com.seventeen.project.dto;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+public record WholesaleRegisterRequest(
+
+        @NotBlank
+        String fullName,
+
+        @NotBlank
+        @Email
+        String email,
+
+        @NotBlank
+        String phone,
+
+        @NotBlank
+        String shopName,
+
+        @NotBlank
+        String shopAddress,
+
+        String businessRegistrationNumber,
+
+        @NotBlank
+        @Size(min = 8)
+        String password
+
+) {}
