@@ -19,23 +19,18 @@ import { useAuth } from "../context/AuthContext";
 // Dashboard routes for each account role
 const dashboardRoutes = {
   ADMIN: "/admin",
-
   FACTORY_MANAGER: "/factory-manager",
-
   SALES_MANAGER: "/sales/dashboard",
-
   OUTLET_MANAGER: "/outlet/dashboard",
-
-  DELIVERY_PERSON: "/delivery/dashboard",
-
+  DELIVERY_PERSON: "/delivery/select-vehicle",
   WHOLESALE: "/wholesale/dashboard",
-
   STAFF: "/staff/dashboard",
+  
 };
 
 export default function Login() {
   const navigate = useNavigate();
-  const { login, user, isAuthenticated } = useAuth();
+  const { login } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -80,7 +75,13 @@ export default function Login() {
         );
       }
 
-      // Redirect to role-based dashboard
+      // A new delivery login must select a vehicle before opening its dashboard.
+      // Clear any previous tab-specific vehicle shift data.
+      if (role === "DELIVERY_PERSON") {
+        sessionStorage.removeItem("seventeen_delivery_shift");
+      }
+
+      // Redirect to role-based dashboard or delivery vehicle selection.
       navigate(destination, {
         replace: true,
       });
@@ -333,9 +334,9 @@ export default function Login() {
 
               <Link
                 to="/wholesale/register"
-                className="mt-5 flex items-center justify-center gap-3 rounded-full border-2 border-[#3654FF] px-6 py-3 font-semibold text-[#3654FF] transition hover:bg-[#EAF0FF]"
+                className="flex w-full items-center justify-center gap-3 rounded-full border-2 border-[#3654FF] px-6 py-4 text-lg font-bold text-[#3654FF] transition hover:bg-blue-50"
               >
-                <UserPlus size={20} />
+                <UserPlus size={22} />
                 Create Wholesale Account
               </Link>
 
