@@ -1,4 +1,6 @@
 .content-body {
+    flex: 1;
+    min-height: 0;
     padding: 24px 32px;
     display: flex;
     flex-direction: column;
@@ -8,8 +10,8 @@
 
 .data-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
 }
 
 .data-card {
@@ -31,7 +33,7 @@
 }
 
 .data-value {
-    font-size: 22px;
+    font-size: 15px;
     font-weight: 600;
     color: #0f172a;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -49,12 +51,12 @@
 
 .analytics-section {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
     gap: 16px;
 }
 
 .payment-methods-card {
-    height: 150px;
+    height: 180px;
 }
 
 .card {
@@ -63,6 +65,8 @@
     padding: 20px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     border: 1px solid #e2e8f0;
+    min-width: 0;
+    overflow-wrap: break-word;
 }
 
 .card h4 {

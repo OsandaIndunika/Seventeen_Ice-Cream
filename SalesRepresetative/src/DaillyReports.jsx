@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {useNavigate} from 'react-router-dom';
 import './DailyReports.css';
 import './Navigation.css';
 import {
@@ -11,6 +12,12 @@ import {
 
 function DailyReports () {
     const [activeTab, setActiveTab] = useState('Daily Reports');
+    const navigate = useNavigate();
+    const [userName, setUserName] = useState('Sarah Jenkis');
+    const [showPrevious, setShowPrevious] = useState(false);
+    const handleToggleBillsView = () => {
+        setShowPrevious(!showPrevious);
+    };
 
     //Sample Data
     const salesByDate = [
@@ -23,13 +30,41 @@ function DailyReports () {
         {date: '2026-08-18', amount: 351, width: '55%'}
     ];
 
-    const bills = [
+    const previousBills = [
+        {id: 'Bill #4011', time: '10:30 AM', items: 'Double Scoop (Strawberry), Cone', payment: 'Cash', amount: '$24.50'},
+        {id: 'Bill #4012', time: '10:12 AM', items: 'Mint Chocolate Tub (L)', payment: 'Card', amount: '$10.00'},
+        {id: 'Bill #4013', time: '09:50 AM', items: 'Single Scoop x3', payment: 'Cash', amount: '$13.50'},
+        {id: 'Bill #4014', time: '09:45 AM', items: 'Classic Vanilla Tub (L)', payment: 'Cash', amount: '$9.00'},
+        {id: 'Bill #4015', time: '09:20 AM', items: 'Strawberry Tub (1L), Cone', payment: 'Card', amount: '$11.50'}
+    ];
+
+    const todayBills = [
         {id: 'Bill #4020', time: '10:30 AM', items: 'Double Scoop (Strawberry), Cone', payment: 'Cash', amount: '$24.50'},
         {id: 'Bill #4019', time: '10:12 AM', items: 'Mint Chocolate Tub (L)', payment: 'Card', amount: '$10.00'},
         {id: 'Bill #4018', time: '09:50 AM', items: 'Single Scoop x3', payment: 'Cash', amount: '$13.50'},
         {id: 'Bill #4017', time: '09:45 AM', items: 'Classic Vanilla Tub (L)', payment: 'Cash', amount: '$9.00'},
         {id: 'Bill #4016', time: '09:20 AM', items: 'Strawberry Tub (1L), Cone', payment: 'Card', amount: '$11.50'}
     ];
+
+    const handleLogout = () => { 
+        localStorage.removeItem('authToken'); 
+        sessionStorage.clear();
+
+        const confirmLogout = window.confirm("Are you sure you want to log out?");
+        if (!confirmLogout) return;
+        navigate('/');
+    };
+
+    const currentBillsList = showPrevious ? previousBills : todayBills;
+
+    const getUserInitials = (name) => {
+        if (!name) return '';
+        const parts = name.trim().split(' ');
+        if (parts.length >= 2) {
+            return (parts[0][0] + parts[1][0]).toUpperCase();
+        }
+        return name.substring(0, 2).toUpperCase();
+    };
 
     return (
         <div className="app-container">
@@ -40,9 +75,9 @@ function DailyReports () {
 
                 <nav className="nav-menu">
                     <button className={`nav-item ${activeTab === 'Billing' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('Billing')}>
+                    onClick={() => navigate('/billing')}>
                         <FaFileInvoiceDollar className="nav-icon"/>
-                        <span>Billing</span>
+                        <span>POS & Billing</span>
                     </button>
 
                     <button className={`nav-item ${activeTab === 'Daily Reports' ? 'active' : ''}`}
@@ -53,16 +88,16 @@ function DailyReports () {
                     </button>
 
                     <button className={`nav-item ${activeTab === 'Returns' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('Returns')}>
+                    onClick={() => navigate('/returns')}>
                         <FaReply className="nav-icon"/>
                         <span>Returns</span>
                     </button>
                 </nav>
 
-                <div className="logout-btn"><FaSignOutAlt /> Logout</div>
+                <div className="logout-btn" onClick={handleLogout}><FaSignOutAlt /> Logout</div>
             </aside>
 
-            <main className="main-wrapper">
+            <div className="main-wrapper">
                 <header className="top-header">
                     <div className="header-left">
                         <div className="status-indicator">
@@ -76,14 +111,14 @@ function DailyReports () {
 
                     <div className="header-right">
                         <div className="user-info">
-                            <div className="user-name">Sarah Jenkins</div>
+                            <div className="user-name">{userName}</div>
                             <div className="user-role">OUTLET MANAGER</div>
                         </div>
-                        <span className="user-avatar-dot">SJ</span>
+                        <span className="user-avatar-dot">{getUserInitials(userName)}</span>
                     </div>
                 </header>
 
-                <div className="content-body">
+                <main className="content-body">
                     <section className="data-grid">
                         <div className="data-card">
                             <span className="data-label">TODAY'S SALES</span>
@@ -143,8 +178,10 @@ function DailyReports () {
 
                     <section className="card todays-bill-card">
                         <div className="card-header-flex">
-                            <h4>Todays's Bills</h4>
-                            <button className="text-btn">Previous Bills</button>
+                            <h4>{showPrevious ? 'Previous Bills' : "Today's Bills"}</h4>
+                            <button className="text-btn" onClick={handleToggleBillsView}>
+                                {showPrevious ? "View Today's Bills" : 'Previous Bills'}
+                            </button>
                         </div>
                         <div className="table-responsive">
                             <table className="bills-table">
@@ -159,15 +196,13 @@ function DailyReports () {
                                 </thead>
 
                                 <tbody>
-                                    {bills.map((bill, index) => (
+                                    {currentBillsList.map((bill, index) => (
                                         <tr key={index}>
                                             <td className="bill-id"><div className="pointer"></div>{bill.id}</td>
                                             <td>{bill.time}</td>
                                             <td>{bill.items}</td>
                                             <td>
-                                                <span className="badge">
-                                                    {bill.payment}
-                                                </span>
+                                                <span className="badge">{bill.payment}</span>
                                             </td>
                                             <td className="amount-cell">{bill.amount}</td>
                                         </tr>
@@ -176,8 +211,8 @@ function DailyReports () {
                             </table>
                         </div>
                     </section>
-                </div>
-            </main>
+                </main>
+            </div>
         </div>
     );
 }

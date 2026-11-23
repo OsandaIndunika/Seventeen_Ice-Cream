@@ -142,16 +142,20 @@
 .field-icon {
     position: absolute;
     left: 12px;
-    color: #93c5fd;
-    font-size: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #0679fc;
+    font-size: 14px;
+    z-index: 1;
 }
 
 .form-input {
     width: 100%;
+    box-sizing: border-box;
     background-color: #1e40af;
     border: 1px solid #3b82f6;
     border-radius: 6px;
-    padding: 10px 12px 10px 34px;
+    padding: 10px 12px 10px 36px !important;
     color: #ffffff;
     font-size: 13px;
     outline: none;
@@ -284,10 +288,10 @@
 }
 
 .bottom-form-row {
-display: flex;
-gap: 16px;
-align-items: flex-end;
-margin-bottom: 16px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+    margin-bottom: 16px;
 }
 
 .reason-col { flex: 1; }

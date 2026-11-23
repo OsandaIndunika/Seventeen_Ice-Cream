@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {useNavigate} from 'react-router-dom';
 import './Returns.css';
 import './Navigation.css';
 import {
@@ -22,6 +23,105 @@ import {
 
 function Returns() {
     const [activeTab, setActiveTab] = useState('Returns');
+    const navigate = useNavigate();
+    const [userName] = useState('Sales Manager');
+    const [returnReason, setReturnReason] = useState('Damaged packaging');
+    const [receivingNote, setReceivingNote] = useState('Sales damaged in transit; set aside quality review.');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const [returnItems, setReturnItems] = useState([
+        { id: 1, product: 'Classic Vanilla', pack: 'Tub 500ml', quantity: '6' },
+        { id: 2, product: 'Strawberry Swirl', pack: 'Tub-500ml', quantity: '4' }
+    ]);
+
+    const getUserInitials = (name) => {
+        if (!name) return '';
+        const parts = name.trim().split(' ');
+        if (parts.length >= 2) {
+            return (parts[0][0] + parts[1][0]).toUpperCase();
+        }
+        return name.substring(0, 2).toUpperCase();
+    };
+
+    const handleLogout = () => { 
+        localStorage.removeItem('authToken'); 
+        sessionStorage.clear();
+
+        const confirmLogout = window.confirm("Are you sure you want to log out?");
+        if (!confirmLogout) return;
+        navigate('/');
+    };
+
+    const handleAddProduct = () => {
+        const newItem = {
+            id: Date.now(), 
+            product: '',
+            pack: '',
+            quantity: '1'
+        };
+        setReturnItems([...returnItems, newItem]);
+    };
+
+    const handleDeleteProduct = async (id, productName) => {
+        if (!window.confirm(`Are you sure you want to remove ${productName || 'this product'}?`)) return;
+
+        try {
+            setReturnItems(returnItems.filter(item => item.id !== id));
+        } catch (error) {
+            console.error("Failed to delete item from backend", error);
+            alert("Could not delete item. Please try again.");
+        }
+    };
+
+    const handleItemChange = (id, field, value) => {
+        setReturnItems(returnItems.map(item => 
+            item.id === id ? { ...item, [field]: value } : item
+        ));
+    };
+
+    const handleClearEntry = () => {
+        setReturnItems([]);
+        setReturnReason('');
+        setReceivingNote('');
+    };
+
+    const handleRecordReturn = async () => {
+        if (returnItems.length === 0) {
+            alert("Please add at least one product return.");
+            return;
+        }
+
+        setIsSubmitting(true);
+        
+        const returnPayload = {
+            shopName: "Sunset Provisions",
+            location: "24 Lake Road, Nugegoda",
+            date: "15 Oct, 2026",
+            reason: returnReason,
+            note: receivingNote,
+            items: returnItems
+        };
+
+        try {
+            const response = await fetch('https://api.yourdomain.com/returns', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(returnPayload)
+            });
+
+            if (!response.ok) throw new Error('Failed to record return');
+
+            alert("Return recorded successfully!");
+            handleClearEntry(); 
+        } catch (error) {
+            console.error("Error recording return:", error);
+            alert("Failed to submit return to server. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     return (
         <div className="app-container">
@@ -32,13 +132,13 @@ function Returns() {
         
                 <nav className="nav-menu">
                     <button className={`nav-item ${activeTab === 'Billing' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('Billing')}>
+                    onClick={() => navigate('/billing')}>
                         <FaFileInvoiceDollar className="nav-icon"/>
                         <span>POS & Billing</span>
                     </button>
         
                     <button className={`nav-item ${activeTab === 'Daily Reports' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('Daily Reports')}>
+                    onClick={() => navigate('/dailyReports')}>
                         <FaChartLine className="nav-icon"/>
                         <span>Daily Reports</span>
                     </button>
@@ -51,7 +151,7 @@ function Returns() {
                     </button>
                 </nav>
 
-                <div className="logout-btn"><FaSignOutAlt /> Logout</div>
+                <div className="logout-btn" onClick={handleLogout}><FaSignOutAlt /> Logout</div>
             </aside>
 
             <div className="main-wrapper">
@@ -68,10 +168,10 @@ function Returns() {
 
                     <div className="header-right">
                         <div className="user-info">
-                            <div className="user-name">Sales Manager</div>
+                            <div className="user-name">{userName}</div>
                             <div className="user-role">SALES & RETURNS</div>
                         </div>
-                        <span className="user-avatar-dot">SM</span>
+                        <span className="user-avatar-dot">{getUserInitials(userName)}</span>
                     </div>
                 </header>
 
@@ -168,40 +268,49 @@ function Returns() {
                                     <span className="col-actions">ACTION</span>
                                 </div>
 
-                                <div className="product-row">
-                                    <div className="col-product item-flex">
-                                        <FaBox className="item-icon"/>
-                                        <input type="text" value="Classic Vanilla" readOnly className="table-input" />
+                                {returnItems.map((item) => (
+                                    <div className="product-row" key={item.id}>
+                                        <div className="col-product item-flex">
+                                            <FaBox className="item-icon"/>
+                                            <input 
+                                                type="text" 
+                                                value={item.product} 
+                                                onChange={(e) => handleItemChange(item.id, 'product', e.target.value)}
+                                                placeholder="Product name"
+                                                className="table-input" 
+                                            />
+                                        </div>
+                                        <div className="col-pack">
+                                            <input 
+                                                type="text" 
+                                                value={item.pack} 
+                                                onChange={(e) => handleItemChange(item.id, 'pack', e.target.value)}
+                                                placeholder="Pack size"
+                                                className="table-input" 
+                                            />
+                                        </div>
+                                        <div className="col-qty">
+                                            <input 
+                                                type="text" 
+                                                value={item.quantity} 
+                                                onChange={(e) => handleItemChange(item.id, 'quantity', e.target.value)}
+                                                className="table-input text-center" 
+                                            />
+                                        </div>
+                                        <div className="col-actions btn-group">
+                                            <button 
+                                                className="icon-btn action-delete" 
+                                                onClick={() => handleDeleteProduct(item.id, item.product)}
+                                                title="Delete item"
+                                            >
+                                                <FaTrash size={11} />
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div className="col-pack">
-                                        <input type="text" value="Tub 500ml" readOnly className="table-input" />
-                                    </div>
-                                    <div className="col-qty">
-                                        <input type="text" value="6" readOnly className="table-input text-center" />
-                                    </div>
-                                    <div className="col-actions btn-group">
-                                        <button className="icon-btn action-delete"><FaTrash size={11} /></button>
-                                    </div>
-                                </div>
-
-                                <div className="product-row">
-                                    <div className="col-product item-flex">
-                                        <FaBox className="item-icon"/>
-                                        <input type="text" value="Strawberry Swirl" readOnly className="table-input" />
-                                    </div>
-                                    <div className="col-pack">
-                                        <input type="text" value="Tub-500ml" readOnly className="table-input" />
-                                    </div>
-                                    <div className="col-qty">
-                                        <input type="text" value="4" readOnly className="table-input text-center" />
-                                    </div>
-                                    <div className="col-actions btn-group">
-                                        <button className="icon-btn action-delete"><FaTrash size={11} /></button>
-                                    </div>
-                                </div>
+                                ))}
 
                                 <div className="table-footer">
-                                    <button className="add-product-btn">
+                                    <button className="add-product-btn" onClick={handleAddProduct}>
                                         <FaPlus /> Add Product
                                     </button>
 
@@ -217,34 +326,44 @@ function Returns() {
                                 </div>
 
                                 <div className="metric-value-row">
-                                    <span className="metric-num">10</span>
+                                    <span className="metric-num">{returnItems.length * 5}</span>
                                     <span className="metric-sub">tubs . 5L total</span>
                                 </div>
                                 <br />
-                                <p>2 products from Sunset Provisions Not included in recorded totals yet.</p>
+                                <p>{returnItems.length} products from Sunset Provisions Not included in recorded totals yet.</p>
                             </div>
                         </div>
 
-                        <div className="bottom-from-row">
+                        <div className="bottom-form-row">
                             <div className="reason-col">
                                 <label className="input-label">RETURN REASON</label>
-                                <input type="text" value="Damaged packaging" readOnly className="form-input" />
+                                <input 
+                                    type="text" 
+                                    value={returnReason}
+                                    onChange={(e) => setReturnReason(e.target.value)}
+                                    className="form-input" 
+                                />
                             </div>
 
                             <div className="note-col">
                                 <label className="input-label">RECIEVING NOTE (OPTIONAL)</label>
-                                <input type="text" value="Sales damaged in transit; set aside quality review." readOnly className="form-input" />
+                                <input 
+                                    type="text" 
+                                    value={receivingNote} 
+                                    onChange={(e) => setReceivingNote(e.target.value)}
+                                    className="form-input" 
+                                />
+                            </div>
+                        </div>
+
+                        <div className="footer-btn">
+                            <div className="form-footer-note">
+                                <span className="info-bullet"></span> Recorded under Sunset Provisions. Products will be restocked to inventory automatically
                             </div>
 
-                            <div className="footer-btn">
-                                <div className="form-footer-note">
-                                    <span className="info-bullet"></span> Recorded under Sunset Provisions. Products will be restocked to inventory automatically
-                                </div>
-
-                                <div className="action-buttons-col">
-                                    <button className="btn-clear"><FaTimes />Clear entry</button>
-                                    <button className="btn-record"><FaCheck />Record Return</button>
-                                </div>
+                            <div className="action-buttons-col">
+                                <button className="btn-clear" onClick={handleClearEntry}><FaTimes />Clear entry</button>
+                                <button className="btn-record" onClick={handleRecordReturn}><FaCheck />{isSubmitting ? 'Recording...' : 'Record Return'}</button>
                             </div>
                         </div>
 

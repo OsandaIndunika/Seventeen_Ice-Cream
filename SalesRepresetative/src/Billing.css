@@ -1,4 +1,3 @@
-
 .dashboard-content {
     padding: 12px 24px;
     max-width: 1100px;
@@ -162,9 +161,17 @@
 .order-item-row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 0.8rem;
     color: #555;
     margin-bottom: 6px;
+}
+
+.icon-btn.action-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ff4d4d;
 }
 
 .order-item-price {
@@ -227,8 +234,188 @@
     gap: 6px;
 }
 
-.payment-btn.active {
+.payment-btn:hover {
     background-color: #bfe0fb;
+}
+
+.receipt-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 25, 45, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 9999; 
+    overflow-y: auto;
+}
+
+.receipt-modal {
+    width: 100%;
+    max-width: 350px;
+    background: white;
+    border: 2px solid #8bb7ec;
+    padding: 38px 34px  24px;
+    border-radius: 28px;
+    color: #102f59;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.22);
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+.receipt-heading {
+    display: flex;
+    justify-content: center;
+    margin-top: -30px;
+    margin-bottom: 20px;
+}
+
+.receipt-heading span {
+    background: #07336b;
+    color: white;
+    font-size: 25px;
+    font-weight: 700;
+    padding: 10px 30px;
+    border-radius: 20px;
+    text-align: center; 
+}
+
+.receipt-details {
+    margin-bottom: 15px;
+}
+
+.receipt-details p {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    margin: 10px 0;
+    color: #142e53;
+}
+
+.receipt-details strong {
+    min-width: 80px;
+    font-weight: 700;
+}
+
+.receipt-icon {
+    color: #073b78;
+    font-size: 15px;
+    font-weight: bold;
+    width: 45px;
+    text-align: center;
+}
+
+.receipt-divider {
+    height: 2px;
+    background: #a9c1df;
+    margin: 10px 0;
+}
+
+.receipt-items-header {
+    display: flex;
+    justify-content: space-between;
+    background: #07366f;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.receipt-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 15px;
+    border-bottom: 2px solid #a9c1df;
+    font-size: 12px;
+    color: #142e53;
+}
+
+/* .receipt-item span:last-child {
+    font-weight: 600;
+    white-space: nowrap;
+} */
+
+.receipt-total {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 120px;
+    background: #c5ddfb;
+    padding: 8px 10px;
+    border-radius: 15px;
+    margin: 10px -8px 10px;
+    font-size: 15px;
+}
+
+.receipt-total strong {
+    color: #07366f;
+}
+
+.receipt-total span {
+    background: #07366f;
+    color: white;
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.receipt-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 10px 0;
+}
+
+.receipt-buttons button {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 15px;
+    background: #07366f;
+    color: white;
+    font-size: 12px;
+    font-weight: 600px;
+    cursor: pointer;
+    transition: 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.receipt-buttons button:hover {
+    background-color: #12539a;
+    transform: translateY(-2px);
+}
+
+.receipt-buttons button span {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.receipt-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    margin-top: 10px;
+    color: #07336b;
+}
+
+.receipt-footer span {
+    height: 2px;
+    background: #547da9;
+    flex: 1;
+}
+
+.receipt-footer em {
+    font-size: 15px;
+    font-weight: 700;
 }
 
 .shop-owner-footer {

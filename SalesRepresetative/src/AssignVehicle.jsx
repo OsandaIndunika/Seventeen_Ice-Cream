@@ -38,7 +38,7 @@ function AssignVehicle({onChangeLogin, onOutletSelect}) {
         <div className="assign-container">
             <div className="assign-card-wrapper">
                 <span className="brand-subtitle">
-                    <span className="frosty">Frosty</span><span className="delights"> Delights</span>
+                    <img src="./src/assets/logo.PNG" alt="Logo" />
                 </span>
                 <h1 className="brand-title">
                     Assign Your Vehicle

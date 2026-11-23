@@ -5,6 +5,15 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+html, 
+body,
+#root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
 body {
     background-color:#F7FAFF;
     color: #333;
@@ -12,19 +21,23 @@ body {
 
 .app-container {
     display: flex;
-    min-height: 100vh;
-    box-sizing: border-box;
+    /* min-height: 100vh;
+    box-sizing: border-box; */
     width: 100%;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .sidebar {
     width: 200px;
+    min-width: 200px;
     background-color: #eaf2ff;
     display: flex;
     flex-direction: column;
     padding: 24px 16px;
     position: relative;
     height: 100vh;
+    flex-shrink: 0;
 }
 
 img {
@@ -50,7 +63,7 @@ img {
     border-radius: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     transition: all 0.2s ease;
 }
 
@@ -64,6 +77,7 @@ img {
     font-size: 18px;
     min-width: 20px;
     display: inline-block;
+    margin-right: 20px;
 }
 
 .active-dot {
@@ -71,6 +85,7 @@ img {
     height: 6px;
     background-color: #ffffff;
     border-radius: 50%;
+    margin-left: 10px;
 }
 
 .logout-btn {
@@ -85,10 +100,12 @@ img {
 
 .main-wrapper {
     flex: 1;
+    min-width: 0;
     display: flex;
     height: 100vh;
     flex-direction: column;
     background-color: #f4f6f8;
+    overflow: hidden;
 }
 
 .top-header {
@@ -97,7 +114,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 24px;
+    padding: 5px 24px;
 }
 
 .header-left {
@@ -133,9 +150,11 @@ img {
 }
 
 .header-right {
-    display: flex;
+    display: inline-flex;
+    flex-direction: row !important;
     align-items: center;
-    gap: 8px;
+    justify-content: flex-end;
+    gap: 10px;
 }
 
 .user-info {
@@ -157,6 +176,8 @@ img {
 .user-avatar-dot {
     width: 30px;
     height: 30px;
+    min-width: 30px;
+    flex-shrink: 0;
     background-color: #bbd0ff;
     border-radius: 50%;
     display: flex;
