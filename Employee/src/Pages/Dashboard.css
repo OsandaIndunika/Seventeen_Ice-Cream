@@ -1,0 +1,236 @@
+
+/* =========================
+   MAIN DASHBOARD LAYOUT
+========================= */
+
+.employee-app-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.employee-main-content {
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+  background: #f6fafa;
+}
+
+/* =========================
+   DASHBOARD BODY
+========================= */
+.employee-dashboard-body {
+  width: 100%;
+  min-width: 0;
+  padding: 28px;
+}
+/* =========================
+   SUMMARY SECTION
+========================= */
+
+.employee-summary-section {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+/* =========================
+   SUMMARY GRID
+========================= */
+
+.employee-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  width: 100%;
+  min-width: 0;
+}
+/* =========================
+   SUMMARY CARD
+========================= */
+
+.employee-summary-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-width: 0;
+  min-height: 155px;
+
+  padding: 20px;
+
+  background: #ffffff;
+  border: 1px solid #e3eeeb;
+  border-radius: 15px;
+
+  box-shadow: 0 3px 12px rgba(35, 75, 70, 0.04);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.employee-summary-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(35, 75, 70, 0.09);
+}
+
+/* =========================
+   CARD TOP
+========================= */
+
+.employee-summary-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.employee-summary-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+
+  border-radius: 12px;
+}
+
+.employee-summary-period {
+  font-size: 11px;
+  font-weight: 500;
+  color: #91a19f;
+  text-align: right;
+}
+
+/* =========================
+   CARD CONTENT
+========================= */
+
+.employee-summary-card-content {
+  margin-top: 18px;
+}
+
+.employee-summary-title {
+  margin: 0 0 8px;
+  color: #6b8581;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.employee-summary-value-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.employee-summary-value-row h3 {
+  margin: 0;
+  color: #244842;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.employee-summary-value-row span {
+  color: #7c9692;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* =========================
+   CARD ICON COLORS
+========================= */
+
+/* WORKING HOURS */
+
+.employee-summary-card.green .employee-summary-icon {
+  background: #e5f6f0;
+  color: #168a77;
+}
+
+/* OVERTIME HOURS */
+
+.employee-summary-card.pink .employee-summary-icon {
+  background: #fce6ef;
+  color: #d33b81;
+}
+
+/* NET SALARY */
+
+.employee-summary-card.blue .employee-summary-icon {
+  background: #e9eeff;
+  color: #6373c6;
+}
+
+/* LEAVE BALANCE */
+
+.employee-summary-card.orange .employee-summary-icon {
+  background: #fff1df;
+  color: #c48a35;
+}
+
+/* =========================
+   TABLET RESPONSIVE
+========================= */
+
+@media (max-width: 1200px) {
+
+  .employee-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+@media (max-width: 1024px) {
+
+  .employee-dashboard-body {
+    padding: 20px;
+  }
+
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+  .employee-dashboard-body {
+    padding: 15px;
+  }
+
+  .employee-welcome-section h1 {
+    font-size: 21px;
+  }
+
+  .employee-summary-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .employee-summary-card {
+    min-height: 135px;
+    padding: 16px;
+  }
+
+  .employee-summary-value-row h3 {
+    font-size: 23px;
+  }
+
+  .employee-summary-heading h2 {
+    font-size: 19px;
+  }
+
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .employee-summary-card {
+    transition: none;
+  }
+
+}

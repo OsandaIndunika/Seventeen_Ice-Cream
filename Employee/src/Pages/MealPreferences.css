@@ -1,0 +1,464 @@
+
+/* PAGE BODY */
+
+.meal-page-body {
+  width: 100%;
+  min-width: 0;
+  padding: 28px;
+  background: #f6fafa;
+}
+
+/* MONTH FILTER */
+
+.meal-page-heading {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 25px;
+}
+
+.meal-month-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.meal-month-filter label,
+.meal-date-field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #527b78;
+}
+
+.meal-month-filter input,
+.meal-date-field input {
+  padding: 10px 12px;
+  border: 1px solid #dcebe8;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #244842;
+  font-size: 13px;
+}
+
+/* SUMMARY CARDS */
+
+.meal-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.meal-summary-card {
+  min-width: 0;
+  min-height: 165px;
+  padding: 20px;
+  border: 1px solid #e3eeeb;
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: 0 3px 12px rgba(35, 75, 70, 0.04);
+}
+
+.meal-summary-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+}
+
+.meal-summary-card p {
+  margin: 0 0 7px;
+  font-size: 13px;
+  color: #6b8581;
+}
+
+.meal-summary-card h2 {
+  margin: 0;
+  font-size: clamp(17px, 1.7vw, 26px);
+  font-weight: 700;
+  color: #244842;
+  overflow-wrap: anywhere;
+}
+
+.meal-card-description {
+  display: block;
+  margin-top: 8px;
+  font-size: 11px;
+  color: #91a19f;
+}
+
+/* CARD COLORS */
+
+.meal-summary-card.green .meal-summary-icon {
+  background: #e5f6f0;
+  color: #168a77;
+}
+
+.meal-summary-card.pink .meal-summary-icon {
+  background: #fce6ef;
+  color: #d33b81;
+}
+
+.meal-summary-card.blue .meal-summary-icon {
+  background: #e9eeff;
+  color: #6373c6;
+}
+
+.meal-summary-card.orange .meal-summary-icon {
+  background: #fff1df;
+  color: #c48a35;
+}
+
+/* COMMON SECTIONS */
+
+.meal-preference-section,
+.meal-history-section {
+  min-width: 0;
+  padding: 24px;
+  margin-bottom: 28px;
+  border: 1px solid #e3eeeb;
+  border-radius: 15px;
+  background: #ffffff;
+}
+
+.meal-section-header,
+.meal-history-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.meal-section-title,
+.meal-history-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #168a77;
+}
+
+.meal-section-title h2,
+.meal-history-title h2 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  color: #244842;
+}
+
+.meal-section-title p,
+.meal-history-title p {
+  margin: 5px 0 0;
+  font-size: 12px;
+  color: #7c9692;
+}
+
+/* DATE FIELD */
+
+.meal-date-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  margin-bottom: 22px;
+}
+
+/* CHOICE CARDS */
+
+.meal-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.meal-choice-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  min-width: 0;
+  padding: 20px;
+  border: 2px solid #e3eeeb;
+  border-radius: 14px;
+  background: #ffffff;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.meal-choice-card:hover {
+  border-color: #8ad3bd;
+}
+
+.meal-choice-card.selected {
+  border-color: #168a77;
+  background: #f3fcf8;
+  box-shadow: 0 3px 12px rgba(22, 138, 119, 0.07);
+}
+
+.meal-choice-card input[type="radio"] {
+  position: absolute;
+  top: 17px;
+  right: 17px;
+  width: 17px;
+  height: 17px;
+  accent-color: #168a77;
+}
+
+.meal-choice-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+}
+
+.meal-choice-icon.green {
+  background: #e5f6f0;
+  color: #168a77;
+}
+
+.meal-choice-icon.pink {
+  background: #fce6ef;
+  color: #d33b81;
+}
+
+.meal-choice-content {
+  min-width: 0;
+  padding-right: 14px;
+}
+
+.meal-choice-content h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #244842;
+}
+
+.meal-choice-content p {
+  margin: 0 0 13px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #7c9692;
+}
+
+.meal-choice-tag {
+  display: inline-flex;
+  padding: 6px 11px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.meal-choice-tag.green {
+  background: #e5f6f0;
+  color: #168a77;
+}
+
+.meal-choice-tag.pink {
+  background: #fce6ef;
+  color: #d33b81;
+}
+
+/* ALLOWANCE INFO */
+
+.meal-allowance-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 15px;
+  margin-bottom: 18px;
+  border: 1px solid #d5e8fc;
+  border-radius: 11px;
+  background: #f1f7ff;
+  color: #5275a3;
+}
+
+.meal-allowance-info svg {
+  flex-shrink: 0;
+}
+
+.meal-allowance-info p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* EXISTING PREFERENCE */
+
+.meal-existing-info {
+  padding: 12px 15px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  background: #f7faf9;
+  color: #527b78;
+  font-size: 12px;
+}
+
+/* MESSAGES */
+
+.meal-message {
+  padding: 12px 15px;
+  margin: 0 0 18px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.meal-message.success {
+  background: #e5f6f0;
+  color: #168a77;
+}
+
+.meal-message.error {
+  background: #ffe8ec;
+  color: #c62842;
+}
+
+/* SAVE BUTTON */
+
+.meal-form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.meal-save-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+  background: #168a77;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.meal-save-btn:hover {
+  background: #117463;
+}
+
+/* HISTORY */
+
+.meal-history-count {
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: #e5f6f0;
+  color: #168a77;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.meal-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.meal-table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.meal-table th {
+  padding: 14px 12px;
+  background: #f0f8f6;
+  color: #527b78;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.meal-table td {
+  padding: 15px 12px;
+  border-bottom: 1px solid #edf2f0;
+  color: #526b68;
+  font-size: 13px;
+}
+
+.meal-table tbody tr:hover {
+  background: #f9fcfb;
+}
+
+.meal-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 11px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.meal-status.required {
+  background: #e5f6f0;
+  color: #168a77;
+}
+
+.meal-status.no-meal {
+  background: #fce6ef;
+  color: #d33b81;
+}
+
+.meal-empty-row {
+  padding: 35px !important;
+  text-align: center;
+  color: #7c9692 !important;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1200px) {
+  .meal-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .meal-choice-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .meal-page-body {
+    padding: 18px;
+  }
+
+  .meal-preference-section,
+  .meal-history-section {
+    padding: 17px;
+  }
+}
+
+@media (max-width: 600px) {
+  .meal-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .meal-choice-card {
+    padding: 15px;
+  }
+
+  .meal-section-header,
+  .meal-history-heading {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .meal-save-btn {
+    width: 100%;
+  }
+}

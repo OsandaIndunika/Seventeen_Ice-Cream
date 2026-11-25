@@ -1,0 +1,254 @@
+
+/* =========================
+   EMPLOYEE HEADER
+========================= */
+
+.employee-app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  min-height: 90px;
+  padding: 18px 28px;
+  margin-bottom: 10px;
+
+  background: #f6fafa;
+  border-bottom: 1px solid #dcebe8;
+
+  box-shadow: 0 3px 15px rgba(28, 80, 75, 0.05);
+
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+  box-sizing: border-box;
+}
+
+/* =========================
+   LEFT - TITLE & DESCRIPTION
+========================= */
+
+.employee-header-left {
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+.employee-header-title {
+  margin: 0;
+  color: #203c42;
+  font-size: 19px;
+  font-weight: 650;
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+}
+
+.employee-header-description {
+  margin: 0;
+  color: #819498;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* =========================
+   CENTER - CLOCK
+========================= */
+
+.employee-header-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 18px;
+
+  background: linear-gradient(
+    115deg,
+    #e9f9f4,
+    #d7f2e9
+  );
+
+  border: 1px solid #c8e9df;
+  border-radius: 30px;
+
+  color: #238b7a;
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.employee-header-center p {
+  margin: 0;
+}
+
+/* =========================
+   RIGHT - EMPLOYEE PROFILE
+========================= */
+
+.employee-header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+
+  min-width: 140px;
+}
+
+.employee-header-user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.employee-header-user-info h4 {
+  margin: 0;
+  color: #203c42;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.employee-header-user-info span {
+  color: #819498;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* PROFILE IMAGE */
+
+.employee-profile-image,
+.employee-profile-placeholder {
+  width: 44px;
+  height: 44px;
+
+  border: 3px solid #d7f2e9;
+  border-radius: 50%;
+
+  flex-shrink: 0;
+
+  box-shadow: 0 3px 10px rgba(35, 139, 122, 0.12);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.employee-profile-image {
+  object-fit: cover;
+}
+
+.employee-profile-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #fce6ef;
+  color: #d33b81;
+}
+
+.employee-profile-image:hover,
+.employee-profile-placeholder:hover {
+  transform: scale(1.06);
+  box-shadow: 0 5px 14px rgba(35, 139, 122, 0.2);
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+  .employee-app-header {
+    padding: 16px 20px;
+    gap: 12px;
+  }
+
+  .employee-header-title {
+    font-size: 18px;
+  }
+
+  .employee-header-description {
+    font-size: 11px;
+  }
+
+  .employee-header-right {
+    min-width: auto;
+  }
+
+  .employee-header-center {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .employee-app-header {
+    min-height: 80px;
+    padding: 14px 16px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .employee-header-left {
+    flex-basis: 100%;
+  }
+
+  .employee-header-title {
+    font-size: 17px;
+  }
+
+  .employee-header-description {
+    font-size: 11px;
+  }
+
+  .employee-header-center {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .employee-header-right {
+    min-width: auto;
+    margin-left: auto;
+    gap: 8px;
+  }
+
+  .employee-header-user-info h4 {
+    font-size: 12px;
+  }
+
+  .employee-profile-image,
+  .employee-profile-placeholder {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 420px) {
+
+  .employee-app-header {
+    padding: 12px;
+  }
+
+  .employee-header-center {
+    padding: 7px 10px;
+  }
+
+  .employee-header-user-info {
+    display: none;
+  }
+}
