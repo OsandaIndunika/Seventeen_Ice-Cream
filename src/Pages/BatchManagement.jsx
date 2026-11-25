@@ -18,13 +18,7 @@ const PRODUCT_CATALOG = [
     { id: "str-pop", category: "icecream", name: "Strawberry", flavour: "Strawberry", type: "Popsicle", size: "—", unit: "Pieces" },
     { id: "man-pop", category: "icecream", name: "Mango", flavour: "Mango", type: "Popsicle", size: "—", unit: "Pieces" },
     { id: "cho-packet", category: "icecream", name: "Chocolate", flavour: "Chocolate", type: "Ice Packet", size: "—", unit: "Packets" },
-    // Example yogurt drinks: replace sizes/flavours with factory catalogue later.
-    { id: "yd-str-180", category: "yogurt", name: "Strawberry", flavour: "Strawberry", type: "Yogurt Drink", size: "180 ml", unit: "Bottles" },
-    { id: "yd-str-200", category: "yogurt", name: "Strawberry", flavour: "Strawberry", type: "Yogurt Drink", size: "200 ml", unit: "Bottles" },
-    { id: "yd-str-500", category: "yogurt", name: "Strawberry", flavour: "Strawberry", type: "Yogurt Drink", size: "500 ml", unit: "Bottles" },
-    { id: "yd-van-180", category: "yogurt", name: "Vanilla", flavour: "Vanilla", type: "Yogurt Drink", size: "180 ml", unit: "Bottles" },
-    { id: "yd-van-200", category: "yogurt", name: "Vanilla", flavour: "Vanilla", type: "Yogurt Drink", size: "200 ml", unit: "Bottles" },
-    { id: "yd-van-500", category: "yogurt", name: "Vanilla", flavour: "Vanilla", type: "Yogurt Drink", size: "500 ml", unit: "Bottles" },
+    { id: "yogurt-plain", category: "yogurt", name: "Yogurt Drink", flavour: "", type: "Yogurt Drink", size: "—", unit: "Bottles" },
 ];
 
 const pad = (n, length = 2) => String(n).padStart(length, "0");
@@ -162,11 +156,11 @@ export default function BatchManagement() {
         for (let i = 0; i < filled.length; i++) {
             const item = filled[i];
             const qty = Number(item.quantity);
-            if (!categoryProducts.some((p) => p.id === item.productId)) { setError(`Row ${i + 1}: select a valid ${categoryLabel(selectedCategory)} product and size.`); return; }
+            if (selectedCategory !== "yogurt" && !categoryProducts.some((p) => p.id === item.productId)) { setError(`Row ${i + 1}: select a valid ${categoryLabel(selectedCategory)} product and size.`); return; }
             if (!Number.isSafeInteger(qty) || qty <= 0) { setError(`Row ${i + 1}: quantity must be a positive whole number.`); return; }
             if (!item.expiryDate || item.expiryDate <= createdDay) { setError(`Row ${i + 1}: expiry date must be after the batch creation date (${createdDay}).`); return; }
         }
-        const additions = filled.map((item) => ({ id: crypto.randomUUID(), productId: item.productId, quantity: Number(item.quantity), expiryDate: item.expiryDate }));
+        const additions = filled.map((item) => ({ id: crypto.randomUUID(), productId: selectedCategory === "yogurt" ? "yogurt-plain" : item.productId, quantity: Number(item.quantity), expiryDate: item.expiryDate }));
         setData((prev) => ({ ...prev, batches: prev.batches.map((batch) => batch.id === selectedBatch.id ? { ...batch, products: [...batch.products, ...additions] } : batch) }));
         setDrafts([createDraft()]); setError(""); setMessage(`${additions.length} product${additions.length === 1 ? "" : "s"} saved to ${selectedBatch.number}.`);
     }
@@ -296,12 +290,10 @@ export default function BatchManagement() {
                                         <div><small>♙ CREATED ON · SYSTEM-RECORDED</small><strong>{formatDateTime(selectedBatch.createdAt)}</strong><span>Automatically recorded. Cannot be edited.</span></div>
                                         <div><small>SAVED PRODUCTION</small><strong>{selectedBatch.products.length} products · {savedQuantity.toLocaleString()} units</strong><span>Created by {selectedBatch.createdBy}</span></div>
                                     </div>
-                                    <div className="batch-form-heading"><div><h3>Add produced products</h3><p>Select a {categoryLabel(selectedCategory)} product and enter its quantity and expiry date. Details are saved only when you choose Save products.</p></div></div>
+                                    <div className="batch-form-heading"><div><h3>Add produced products</h3><p>{selectedCategory === "yogurt" ? "Enter yogurt quantity and expiry date." : `Select an ${categoryLabel(selectedCategory)} product and enter its quantity and expiry date.`} Details are saved only when you choose Save products.</p></div></div>
 
-                                    <div className="batch-draft-head" aria-hidden="true">
-                                        <span>FLAVOUR</span>
-                                        <span>PRODUCT TYPE</span>
-                                        <span>SIZE</span>
+                                    <div className={`batch-draft-head ${selectedCategory === "yogurt" ? "batch-yogurt-row" : ""}`} aria-hidden="true">
+                                        {selectedCategory !== "yogurt" && <><span>FLAVOUR</span><span>PRODUCT TYPE</span><span>SIZE</span></>}
                                         <span>QUANTITY</span>
                                         <span>EXPIRY DATE</span>
                                         <span></span>
@@ -314,7 +306,8 @@ export default function BatchManagement() {
                                             const sizes = getAvailableSizes(selectedCategory, draft.flavour, draft.type);
                                             const noSize = draft.type && categoryProducts.some((p) => p.flavour === draft.flavour && p.type === draft.type && p.size === "—");
                                             return (
-                                                <div className="batch-draft-row" key={draft.id}>
+                                                <div className={`batch-draft-row ${selectedCategory === "yogurt" ? "batch-yogurt-row" : ""}`} key={draft.id}>
+                                                     {selectedCategory !== "yogurt" && <>
                                                     <div className="batch-field">
                                                         <label htmlFor={`batch-flavour-${draft.id}`}>Flavour {index + 1}</label>
                                                         <select id={`batch-flavour-${draft.id}`} value={draft.flavour} onChange={(e) => updateDraft(draft.id, "flavour", e.target.value)}>
@@ -336,6 +329,7 @@ export default function BatchManagement() {
                                                             {sizes.map((size) => <option key={size} value={size}>{size}</option>)}
                                                         </select>
                                                     </div>
+                                                     </>}
                                                     <div className="batch-field">
                                                         <label htmlFor={`batch-qty-${draft.id}`}>Quantity</label>
                                                         <input id={`batch-qty-${draft.id}`} type="number" min="1" step="1" placeholder="e.g. 240" value={draft.quantity} onChange={(e) => updateDraft(draft.id, "quantity", e.target.value)} />
@@ -359,7 +353,7 @@ export default function BatchManagement() {
                                         {selectedBatch.products.length === 0 ? <tr><td className="batch-empty-cell" colSpan="4">No products saved in this batch yet.</td></tr> : selectedBatch.products.map((item) => {
                                             const product = productById(item.productId);
                                             const editing = editingId === item.id;
-                                            return <tr key={item.id}><td><strong>{product ? `${product.flavour} · ${product.type}` : "Unknown product"}</strong><small>{product?.size === "—" ? "No size" : (product?.size ?? item.productId)}</small></td><td>{editing ? <input className="batch-inline-input" type="number" min="1" step="1" value={editQuantity} onChange={(e) => setEditQuantity(e.target.value)} aria-label="Edit quantity" /> : item.quantity.toLocaleString()}</td><td>{editing ? <input className="batch-inline-date" type="date" value={editExpiry} onChange={(e) => setEditExpiry(e.target.value)} aria-label="Edit expiry date" /> : formatDate(item.expiryDate)}</td><td>{editing ? <div className="batch-edit-actions"><button type="button" onClick={() => saveEdit(item.id)}>Save</button><button type="button" onClick={() => { setEditingId(null); clearNotice(); }}>Cancel</button></div> : <div className="batch-product-actions"><button type="button" className="batch-edit-btn" onClick={() => startEdit(item)} aria-label={`Edit ${product?.flavour ?? "product"}`} title="Edit saved product">✎</button><button type="button" className="batch-delete-product-btn" onClick={() => handleDeleteProduct(item.id)} aria-label="Delete product" title="Delete product">🗑</button></div>}</td></tr>;
+                                            return <tr key={item.id}><td><strong>{batchCategory(selectedBatch) === "yogurt" ? "Yogurt Drink" : (product ? `${product.flavour} · ${product.type}` : "Unknown product")}</strong>{batchCategory(selectedBatch) !== "yogurt" && <small>{product?.size === "—" ? "No size" : (product?.size ?? item.productId)}</small>}</td><td>{editing ? <input className="batch-inline-input" type="number" min="1" step="1" value={editQuantity} onChange={(e) => setEditQuantity(e.target.value)} aria-label="Edit quantity" /> : item.quantity.toLocaleString()}</td><td>{editing ? <input className="batch-inline-date" type="date" value={editExpiry} onChange={(e) => setEditExpiry(e.target.value)} aria-label="Edit expiry date" /> : formatDate(item.expiryDate)}</td><td>{editing ? <div className="batch-edit-actions"><button type="button" onClick={() => saveEdit(item.id)}>Save</button><button type="button" onClick={() => { setEditingId(null); clearNotice(); }}>Cancel</button></div> : <div className="batch-product-actions"><button type="button" className="batch-edit-btn" onClick={() => startEdit(item)} aria-label={`Edit ${batchCategory(selectedBatch) === "yogurt" ? "Yogurt Drink" : (product?.flavour ?? "product")}`} title="Edit saved product">✎</button><button type="button" className="batch-delete-product-btn" onClick={() => handleDeleteProduct(item.id)} aria-label="Delete product" title="Delete product">🗑</button></div>}</td></tr>;
                                         })}
                                     </tbody></table></div>
                                     <div className="batch-products-footer"><span>✓ Products saved locally · {selectedBatch.createdBy}</span><strong>Total saved: {savedQuantity.toLocaleString()} units</strong></div>

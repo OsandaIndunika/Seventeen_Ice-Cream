@@ -761,3 +761,15 @@
 .batch-product-actions { display:flex; align-items:center; gap:12px; }
 .batch-delete-product-btn { border:0; background:transparent; color:#dc2626; font-size:18px; padding:5px; border-radius:6px; cursor:pointer; }
 .batch-delete-product-btn:hover { background:#fee2e2; }
+
+/* Yogurt: show only quantity and expiry date */
+.batch-draft-head.batch-yogurt-row,
+.batch-draft-row.batch-yogurt-row {
+    grid-template-columns: minmax(100px, 1fr) minmax(145px, 1fr) 35px;
+}
+@media (max-width: 1250px) {
+    .batch-draft-row.batch-yogurt-row { grid-template-columns: repeat(2, minmax(0, 1fr)) 28px; }
+}
+@media (max-width: 620px) {
+    .batch-draft-row.batch-yogurt-row { grid-template-columns: 1fr 28px; }
+}

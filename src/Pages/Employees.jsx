@@ -22,7 +22,7 @@ function Employees() {
   const [nextEmployeeNumber, setNextEmployeeNumber] = useState(87);
 
 
-  const [employeeShiftFilter, setEmployeeShiftFilter] = useState("All");
+
 
 
 
@@ -36,9 +36,9 @@ function Employees() {
     phone: "",
     email: "",
     position: "",
-    shift: "",
-    joinDate: "",
     address: "",
+    joinDate: "",
+    emergencyContactName: "",
     emergencyContact: ""
   });
 
@@ -163,7 +163,9 @@ function Employees() {
       !employeeForm.nic.trim() ||
       !employeeForm.phone.trim() ||
       !employeeForm.position.trim() ||
-      !employeeForm.shift ||
+      !employeeForm.address.trim() ||
+      !employeeForm.emergencyContactName.trim() ||
+      !employeeForm.emergencyContact.trim() ||
       !employeeForm.joinDate
     ) {
       alert("Please fill in all required fields.");
@@ -187,6 +189,12 @@ function Employees() {
       return false;
     }
 
+
+    const emergencyPhone = employeeForm.emergencyContact.trim().replace(/[\s-]/g, "");
+    if (!phonePattern.test(emergencyPhone)) {
+      alert("Please enter a valid emergency contact number.");
+      return false;
+    }
 
     // Email format validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -324,11 +332,7 @@ function Employees() {
       employee.fullName.toLowerCase().includes(searchText) ||
       employee.position.toLowerCase().includes(searchText);
 
-    const matchesShift =
-      employeeShiftFilter === "All" ||
-      employee.shift === employeeShiftFilter;
-
-    return matchesSearch && matchesShift;
+    return matchesSearch;
 
   });
 
@@ -343,10 +347,10 @@ function Employees() {
       phone: employee.phone,
       email: employee.email,
       position: employee.position,
-      shift: employee.shift,
+      address: employee.address || "",
       joinDate: employee.joinDate,
-      address: employee.address,
-      emergencyContact: employee.emergencyContact
+      emergencyContactName: employee.emergencyContactName || "",
+      emergencyContact: employee.emergencyContact || ""
     });
 
     setEditingEmployeeId(employee.id);
@@ -364,17 +368,14 @@ function Employees() {
       phone: "",
       email: "",
       position: "",
-      shift: "",
-      joinDate: "",
       address: "",
+      joinDate: "",
+      emergencyContactName: "",
       emergencyContact: ""
     });
 
     setEditingEmployeeId(null);
   };
-
-
-
 
 
   return (
@@ -384,7 +385,7 @@ function Employees() {
 
       <main className='main-content'>
         {/* Header */}
-        <Header headername="Employees" description="Manage employee information"/>
+        <Header headername="Employees" description="Manage employee information" />
         <div className='employee-dashboard'>
 
 
@@ -678,17 +679,14 @@ function Employees() {
                       />                    </div>
 
                     <div className="employee-field">
-                      <label>Shift</label>
-                      <select
-                        name="shift"
-                        value={employeeForm.shift}
+                      <label>Address</label>
+                      <input
+                        type="text"
+                        name="address"
+                        placeholder="Street, City"
+                        value={employeeForm.address}
                         onChange={handleEmployeeChange}
-                      >
-                        <option value="" disabled>Select shift</option>
-                        <option value="Morning">Morning 8:00 – 4:00</option>
-                        <option value="Evening">Evening 4:00 – 12:00</option>
-                        <option value="Night">Night 12:00 – 8:00</option>
-                      </select>
+                      />
                     </div>
 
                     <div className="employee-field">
@@ -701,21 +699,22 @@ function Employees() {
                       />                    </div>
 
                     <div className="employee-field">
-                      <label>Address</label>
+                      <label>Emergency Contact Name</label>
                       <input
                         type="text"
-                        name="address"
-                        placeholder="Street, City"
-                        value={employeeForm.address}
+                        name="emergencyContactName"
+                        placeholder="Contact person's full name"
+                        value={employeeForm.emergencyContactName}
                         onChange={handleEmployeeChange}
-                      />                    </div>
+                      />
+                    </div>
 
                     <div className="employee-field">
-                      <label>Emergency Contact</label>
+                      <label>Emergency Contact Number</label>
                       <input
                         type="text"
                         name="emergencyContact"
-                        placeholder="Name and phone"
+                        placeholder="e.g. 0771234567"
                         value={employeeForm.emergencyContact}
                         onChange={handleEmployeeChange}
                       />
@@ -837,16 +836,7 @@ function Employees() {
                   value={employeeSearch}
                   onChange={(e) => setEmployeeSearch(e.target.value)}
                 />
-                <select
-                  value={employeeShiftFilter}
-                  onChange={(e) => setEmployeeShiftFilter(e.target.value)}
-                  className="employee-shift-filter"
-                >
-                  <option value="All">All Shifts</option>
-                  <option value="Morning">Morning</option>
-                  <option value="Evening">Evening</option>
-                  <option value="Night">Night</option>
-                </select>
+
 
               </div>
 
@@ -861,7 +851,7 @@ function Employees() {
                       <th>NIC</th>
                       <th>Phone Number</th>
                       <th>Position</th>
-                      <th>Shift</th>
+                      <th>Address</th>
                       <th>Join Date</th>
                       <th>Actions</th>
                     </tr>
@@ -888,7 +878,7 @@ function Employees() {
                           <td>{employee.nic}</td>
                           <td>{employee.phone}</td>
                           <td>{employee.position}</td>
-                          <td>{employee.shift}</td>
+                          <td>{employee.address}</td>
                           <td>{employee.joinDate}</td>
 
                           <td>
